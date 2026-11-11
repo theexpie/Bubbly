@@ -119,6 +119,14 @@
           if (!body) return;
           const svgRoot = document.documentElement;
           const head = document.createElementNS(ns, "head");
+          const charset = document.createElementNS(ns, "meta");
+          charset.setAttribute("charset", "UTF-8");
+          const viewport = document.createElementNS(ns, "meta");
+          viewport.setAttribute("name", "viewport");
+          viewport.setAttribute("content", "width=device-width, initial-scale=1");
+          const title = document.createElementNS(ns, "title");
+          title.textContent = "Clever";
+          head.append(charset, viewport, title);
           body.prepend(head);
           const htmlRoot = body.parentElement && body.parentElement.namespaceURI === ns ? body.parentElement : body;
           try { Object.defineProperty(document, "head", { configurable: true, get() { return head; } }); } catch {}
