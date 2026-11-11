@@ -7,7 +7,7 @@
           <div class="brand"><span class="brandmark">C</span><span>Clever</span></div>
           <div class="top-actions">
             <button class="top-action" id="top-search" aria-label="Focus search"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><circle cx="10.8" cy="10.8" r="6.8"/><path d="m16 16 5 5"/></svg><span>Search</span></button>
-            <button class="top-action" id="top-newtab" aria-label="New tab"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><rect x="4" y="5" width="16" height="15" rx="2"/><path d="M8 5V3h12v14"/></svg><span>New tab</span></button>
+            <button class="top-action" id="top-newtab" aria-label="New tab"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><rect x="4" y="5" width="16" height="15" rx="2"/><path d="M8 5V3h12v14"/></svg><span>Cloak</span></button>
             
           </div>
         </header>
@@ -44,7 +44,7 @@
                 <button class="tool" id="go-reload" title="Reload" aria-label="Reload">↻</button>
                 <button class="tool" id="go-home" title="Home" aria-label="Home">⌂</button>
                 <form id="address-form"><input id="address" class="address" placeholder="Search or enter a URL" autocomplete="url" spellcheck="false"/></form>
-                <button class="tool new-tab-tool" id="new-tab" title="New tab" aria-label="New tab">＋</button>
+                <button class="tool new-tab-tool" id="new-tab" title="Cloak in a new browser tab" aria-label="Cloak in a new browser tab">＋</button>
               </div>
               <div class="frame-stage" id="frame-stage"><button class="exit-fullscreen" id="exit-fullscreen" type="button" aria-label="Exit fullscreen">↙ <span>Exit fullscreen</span></button>
                 <div class="newtab-home" id="newtab-home"><div class="newtab-brand"><span class="brandmark">C</span><strong>Clever</strong></div><p>A quieter place to browse.</p><form class="newtab-search" id="newtab-search"><input id="newtab-query" placeholder="Search or enter a website" autocomplete="off"/><button aria-label="Search">↵</button></form></div>
