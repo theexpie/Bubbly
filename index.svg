@@ -1,18 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xhtml="http://www.w3.org/1999/xhtml" viewBox="0 0 1440 900" width="1440" height="900">
   <foreignObject x="0" y="0" width="100%" height="100%">
-    <xhtml:html xmlns="http://www.w3.org/1999/xhtml">
-      <xhtml:head>
-        <xhtml:meta charset="UTF-8"/>
-        <xhtml:meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"/>
-        <xhtml:meta name="theme-color" content="#20252b"/>
-        <xhtml:title>Edupoint</xhtml:title>
-        <xhtml:style>
+    <xhtml:div xmlns="http://www.w3.org/1999/xhtml" class="document-root"><xhtml:style>
           @font-face{font-family:Inter;src:url('./Inter.ttf') format('truetype');font-weight:100 900;font-display:swap}
           :root{color-scheme:dark;--bg:#20252b;--panel:#292f36;--panel2:#303841;--line:#3c454e;--muted:#9aa5ae;--text:#f2f5f7;--cyan:#159db5;--cyan2:#83d8e5;--gray:#59636d}
           *{box-sizing:border-box}
-          html,body{margin:0;width:100%;height:100%;min-height:100%;background:var(--bg);color:var(--text);font-family:Inter,system-ui,sans-serif}
-          body{overflow-x:hidden;background:radial-gradient(ellipse at 50% 38%,rgba(21,157,181,.105),transparent 36%),linear-gradient(145deg,#20252b 0%,#242a31 52%,#20252b 100%)}
+          .document-root{margin:0;width:100%;height:100%;min-height:100%;background:var(--bg);color:var(--text);font-family:Inter,system-ui,sans-serif}
+          .document-root{overflow-x:hidden;background:radial-gradient(ellipse at 50% 38%,rgba(21,157,181,.105),transparent 36%),linear-gradient(145deg,#20252b 0%,#242a31 52%,#20252b 100%)}
           button,input{font:inherit}
           button{color:inherit}
           .shell{min-height:100vh;display:flex;flex-direction:column;align-items:center;padding:clamp(38px,9vh,92px) 24px 22px;position:relative;isolation:isolate}
@@ -60,8 +54,6 @@
           @media(max-width:380px){.cards,.ai-grid{grid-template-columns:1fr}.shortcuts{gap:20px 10px}}
           @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important;scroll-behavior:auto!important}}
         </xhtml:style>
-      </xhtml:head>
-      <xhtml:body>
         <div class="shell">
           <div class="glow"></div>
           <main id="main" class="view">
@@ -145,7 +137,6 @@
             showPage('home');
           })();
         ]]></xhtml:script>
-      </xhtml:body>
-    </xhtml:html>
+      </xhtml:div>
   </foreignObject>
 </svg>
