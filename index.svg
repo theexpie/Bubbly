@@ -104,6 +104,46 @@
 #browser.immersive .exit-fullscreen{display:flex}
 .exit-fullscreen:hover{background:#303844;transform:translateY(-1px)}
 @media(max-width:620px){.exit-fullscreen{top:10px;right:10px;height:38px;padding:0 12px}}
+/* Clever dark browser refresh */
+:root{color-scheme:dark}
+html,body,#app{background:#090b10!important;color:#edf0f6!important}
+#app{background:#090b10!important}
+.topbar{background:#10141c!important;color:#f4f6fb!important;border-bottom:1px solid #ffffff12!important}
+.brandmark{background:#e8edf7!important;color:#10141c!important}
+.top-action{background:#1a202b!important;color:#edf0f6!important;border:1px solid #ffffff12!important}
+.shell{background:#090b10!important}
+.sidebar{display:none!important}
+.main{width:100%!important;margin:0!important;max-width:none!important;background:#090b10!important}
+.workspace{display:none!important}
+.browser.show{display:flex!important;position:absolute!important;inset:66px 0 0!important;width:100%!important;height:calc(100% - 66px)!important;max-width:none!important;border:0!important;border-radius:0!important;background:#090b10!important;box-shadow:none!important}
+.tabstrip{background:#0e1219!important;border-bottom:1px solid #ffffff12!important}
+.tab{background:#171d27!important;color:#aeb8c8!important;border:1px solid #ffffff10!important}
+.tab.active{background:#252d3a!important;color:#fff!important}
+.browser-toolbar{background:#111721!important;border-bottom:1px solid #ffffff12!important}
+.tool{background:#202734!important;color:#e8edf6!important;border:1px solid #ffffff12!important}
+.address{background:#080b11!important;color:#f3f5fa!important;border:1px solid #303a49!important}
+.frame-stage{background:#090b10!important;color:#edf0f6!important}
+.newtab-home{background:#090b10!important;color:#edf0f6!important}
+.newtab-home p{color:#8d98aa!important}
+.newtab-search input{background:#171e29!important;color:#fff!important;border:1px solid #303a49!important}
+.proxy-status{color:#8793a6!important}
+.fullscreen-search{background:#090b10f5!important;color:#f3f5fa!important;backdrop-filter:blur(24px)!important}
+.fullscreen-search label{color:#f3f5fa!important}
+.fullscreen-search-field{background:#171e29!important;border:1px solid #364153!important}
+.fullscreen-search-field input{color:#fff!important}
+.search-dismiss{background:#202734!important;color:#fff!important}
+#browser.immersive .tabstrip{display:none!important}
+#browser.immersive .browser-toolbar{display:none!important}
+#browser.immersive .frame-stage{position:absolute!important;inset:0!important;width:100%!important;height:100%!important;z-index:8!important;background:#000!important}
+#browser.immersive .site-frame{position:absolute!important;inset:0!important;width:100%!important;height:100%!important;border:0!important}
+#browser.immersive .newtab-home{display:none!important}
+#app.immersive .topbar{display:none!important}
+#app.immersive .browser.show{inset:0!important;height:100%!important}
+.exit-fullscreen{display:none;position:absolute;z-index:30;top:14px;right:14px;align-items:center;justify-content:center;gap:8px;height:40px;padding:0 15px;border:1px solid #ffffff32;border-radius:12px;background:#171b22e8;color:#f5f7fb;font-size:13px;font-weight:600;box-shadow:0 5px 25px #0005;backdrop-filter:blur(16px);transition:background .18s,transform .18s}
+#browser.immersive .exit-fullscreen{display:flex}
+.exit-fullscreen:hover{background:#303844;transform:translateY(-1px)}
+.exit-fullscreen:active{transform:scale(.96)}
+@media(max-width:620px){.browser.show{inset:58px 0 0!important;height:calc(100% - 58px)!important}.topbar{height:58px!important}#app.immersive .browser.show{inset:0!important;height:100%!important}.exit-fullscreen{top:10px;right:10px;height:38px;padding:0 12px}}
       ]]></style>
 
       <script><![CDATA[
@@ -491,7 +531,7 @@
             if (visible) renderTabs();
           }
           function currentTab() { return tabs.find((tab) => tab.id === activeTabId) || null; }
-          function setImmersive(enabled) { $("browser").classList.toggle("immersive", !!enabled); $("exit-fullscreen").setAttribute("aria-hidden", enabled ? "false" : "true"); }
+          function setImmersive(enabled) { $("app").classList.toggle("immersive", !!enabled); $("browser").classList.toggle("immersive", !!enabled); $("exit-fullscreen").setAttribute("aria-hidden", enabled ? "false" : "true"); }
           function renderTabs() {
             $("tabstrip").innerHTML = tabs.map((tab) => {
               return '<button class="tab ' + (tab.id === activeTabId ? "active" : "") + '" data-tab="' + tab.id + '"><span class="tab-title">' + escapeHTML(tab.title) + '</span><span class="tab-close" data-close-tab="' + tab.id + '">×</span></button>';
