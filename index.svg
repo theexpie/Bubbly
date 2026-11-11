@@ -8,7 +8,7 @@
           <div class="top-actions">
             <button class="top-action" id="top-search" aria-label="Focus search"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><circle cx="10.8" cy="10.8" r="6.8"/><path d="m16 16 5 5"/></svg><span>Search</span></button>
             <button class="top-action" id="top-newtab" aria-label="New tab"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><rect x="4" y="5" width="16" height="15" rx="2"/><path d="M8 5V3h12v14"/></svg><span>New tab</span></button>
-            <button class="top-action menu-trigger" id="top-menu" aria-label="Open menu"><span class="hamb"><i></i><i></i><i></i></span><span>Menu</span></button>
+            
           </div>
         </header>
 
@@ -47,29 +47,11 @@
                 <button class="tool new-tab-tool" id="new-tab" title="New tab" aria-label="New tab">＋</button>
               </div>
               <div class="frame-stage" id="frame-stage">
+                <div class="newtab-home" id="newtab-home"><div class="newtab-brand"><span class="brandmark">C</span><strong>Clever</strong></div><p>A quieter place to browse.</p><form class="newtab-search" id="newtab-search"><input id="newtab-query" placeholder="Search or enter a website" autocomplete="off"/><button aria-label="Search">↵</button></form></div>
                 <div class="proxy-status" id="proxy-status"><span class="spinner"></span><span id="proxy-status-text">Enter a website address to begin.</span></div>
               </div>
             </section>
           </main>
-        </div>
-
-        <div class="menu-overlay" id="menu-overlay" aria-hidden="true">
-          <header class="menu-top">
-            <div class="brand"><span class="brandmark">C</span><span>Clever</span></div>
-            <button class="menu-close" id="menu-close" aria-label="Close menu">✕</button>
-          </header>
-          <div class="menu-body">
-            <h2>Menu</h2><p>Everything you need to browse.</p>
-            <div class="menu-grid">
-              <button class="menu-choice" data-menu-page="Browse"><span>⌕</span><b>Browse</b><i>›</i></button>
-              <button class="menu-choice" data-menu-page="Favorites"><span>♥</span><b>Favorites</b><i>›</i></button>
-              <button class="menu-choice" data-menu-page="History"><span>◷</span><b>History</b><i>›</i></button>
-              <button class="menu-choice" data-menu-page="Downloads"><span>↓</span><b>Downloads</b><i>›</i></button>
-              <button class="menu-choice" data-menu-page="Resources"><span>▤</span><b>Resources</b><i>›</i></button>
-              <button class="menu-choice" data-menu-page="Apps"><span>▦</span><b>Apps</b><i>›</i></button>
-              <button class="menu-choice" data-menu-page="Settings"><span>⚙</span><b>Settings</b><i>›</i></button>
-            </div>
-          </div>
         </div>
 
         <div class="modal-scrim" id="modal-scrim" aria-hidden="true">
@@ -82,6 +64,7 @@
           </form>
         </div>
 
+        <div class="fullscreen-search" id="fullscreen-search" aria-hidden="true"><form id="fullscreen-search-form"><button type="button" class="search-dismiss" id="search-dismiss" aria-label="Close search">×</button><label for="fullscreen-query">Search the web</label><div class="fullscreen-search-field"><input id="fullscreen-query" placeholder="Search or enter a URL" autocomplete="off"/><button aria-label="Go">↵</button></div></form></div>
         <div class="toast" id="toast" role="status" aria-live="polite"></div>
       </div>
 
@@ -110,6 +93,8 @@
         @media(max-width:850px){.sidebar{width:175px}.content{padding:24px 20px}.card-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
         @media(max-width:620px){.topbar{height:58px;padding:0 11px}.brand{font-size:19px}.top-action{min-width:38px;width:39px;padding:3px}.top-action span:last-child{display:none}.sidebar{display:none}.content{padding:22px 15px 27px}.card-grid{grid-template-columns:1fr}.menu-top{height:58px;padding:0 13px}.menu-grid{grid-template-columns:1fr}.menu-body{padding:27px 16px}.tab{min-width:72px;max-width:130px}}
         @media(prefers-reduced-motion:reduce){*{animation-duration:.01ms!important;transition-duration:.01ms!important}}
+
+:root{color-scheme:dark}html,body,#app{background:#0b0d11!important;color:#e8ebf1!important}#app{min-height:360px}.topbar{height:58px;background:#101318;border-bottom:1px solid #272c35;padding:0 18px;box-shadow:0 1px 0 #ffffff05}.brand{color:#f4f6fa;font-size:19px}.brandmark{border-color:#596273;color:#f4f6fa;border-radius:9px}.top-action{color:#c6ccd6}.top-action:hover,.top-action.active{background:#242a34}.shell,.main,.workspace,.content{background:#0b0d11!important}.sidebar,.workspace{display:none!important}.browser{display:flex!important;background:#0b0d11!important}.browser-toolbar{height:52px;background:#11151b;border-bottom:1px solid #282e38;padding:7px 12px;gap:7px}.tabstrip{height:39px;background:#0e1116;border-color:#282e38;padding-left:12px}.tab{background:#171c24;border-color:#2b323d;color:#aeb7c5;border-radius:8px 8px 0 0;transition:background .2s,border-color .2s,color .2s,transform .2s}.tab.active{background:#202631;color:#f4f6fa;border-color:#3a4351}.tab-close{color:#8993a2}.tool{color:#b8c1ce;border-radius:9px;transition:background .18s,transform .18s}.tool:hover{background:#252c37;color:#fff}.tool:active{transform:scale(.9)}.address{height:36px;background:#1b212b;border:1px solid #303846;color:#eef2f7;border-radius:11px;padding:0 14px;font-size:13px;transition:border .18s,background .18s,box-shadow .18s}.address:focus{background:#202733;border-color:#7588a5;box-shadow:0 0 0 3px #8096b51f}.frame-stage{background:#0b0d11}.site-frame{background:#fff}.proxy-status{background:#0b0d11;color:#9ca7b7}.spinner{border-color:#343d4a;border-top-color:#a8b8d0}.newtab-home{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:24px;background:radial-gradient(ellipse at 50% 42%,#1b2432 0%,#0b0d11 56%);color:#e8ebf1;transition:opacity .25s,transform .25s}.newtab-home.hidden{opacity:0;pointer-events:none;transform:translateY(8px)}.newtab-brand{display:flex;align-items:center;gap:12px;font-size:30px;letter-spacing:-1px}.newtab-brand .brandmark{width:45px;height:45px;font-size:27px}.newtab-home p{font-size:13px;color:#8e99aa;margin:14px 0 25px}.newtab-search{display:flex;width:min(620px,100%);height:54px;padding:5px;background:#1a202a;border:1px solid #343d4a;border-radius:15px;box-shadow:0 12px 45px #0005;transition:border .2s,box-shadow .2s}.newtab-search:focus-within{border-color:#71839e;box-shadow:0 0 0 4px #8096b51b,0 12px 45px #0005}.newtab-search input{min-width:0;flex:1;border:0;outline:0!important;background:transparent;color:#f4f6fa;padding:0 13px;font-size:14px}.newtab-search input::placeholder{color:#7f8a9a}.newtab-search button,.fullscreen-search-field button{width:43px;border:0;border-radius:11px;background:#dbe4f2;color:#141a23;font-size:20px;transition:transform .16s,background .16s}.newtab-search button:active,.fullscreen-search-field button:active{transform:scale(.92)}.fullscreen-search{position:absolute;z-index:25;inset:0;background:#090b0ff2;backdrop-filter:blur(20px);display:flex;align-items:flex-start;justify-content:center;padding:15vh 22px 30px;opacity:0;visibility:hidden;transform:translateY(12px);transition:opacity .24s,transform .24s,visibility .24s}.fullscreen-search.open{opacity:1;visibility:visible;transform:none}.fullscreen-search form{width:min(760px,100%);position:relative}.fullscreen-search label{display:block;font-size:clamp(25px,5vw,38px);font-weight:650;letter-spacing:-1.2px;margin:0 0 25px;color:#f1f4f9}.search-dismiss{position:absolute;right:0;top:-65px;width:42px;height:42px;border:1px solid #333c49;border-radius:50%;background:#171d26;color:#dce3ed;font-size:24px}.fullscreen-search-field{height:64px;display:flex;gap:8px;padding:6px;background:#1a202a;border:1px solid #3a4554;border-radius:16px;box-shadow:0 15px 50px #0006}.fullscreen-search-field input{min-width:0;flex:1;border:0;outline:0!important;background:transparent;color:#f4f6fa;padding:0 14px;font-size:16px}.fullscreen-search-field input::placeholder{color:#8994a4}.fullscreen-search-field button{width:50px}.modal-scrim{background:#000a;backdrop-filter:blur(8px)}.modal{background:#171c24;color:#edf1f7;border:1px solid #303846}.modal h2,.field label{color:#edf1f7}.modal p,.form-error{color:#a5afbd}.field input,.setting-input{background:#10151c;border-color:#343d49;color:#f1f4f8}.secondary{background:#202631;border-color:#3b4553;color:#e5eaf1}.primary{background:#dbe4f2;color:#151b24}.toast{background:#e0e7f1;color:#10151c}.browser{animation:surface-in .32s ease both}@keyframes surface-in{from{opacity:0;transform:translateY(5px)}to{opacity:1;transform:none}}@media(max-width:620px){.topbar{height:54px;padding:0 12px}.brand{font-size:18px}.top-action{min-width:40px;width:40px}.browser-toolbar{padding:6px 7px;gap:3px}.tool{width:30px;height:32px}.tab{min-width:76px;max-width:125px}.newtab-brand{font-size:27px}.fullscreen-search{padding:17vh 16px 24px}}
       ]]></style>
 
       <script><![CDATA[
@@ -153,7 +138,7 @@
           const DOGE_COMMIT = "04de23d39bcb9fdaca681ee8bc27391891aebe7b";
           const DOGE_CDN = "https://cdn.jsdelivr.net/gh/dogeub/-@" + DOGE_COMMIT;
           const BARE_MUX_URL = "https://cdn.jsdelivr.net/npm/@mercuryworkshop/bare-mux@2.1.9/dist/index.mjs";
-          const DEFAULT_WISP = "wss://wisp.mercurywork.shop/";
+          const DEFAULT_WISP = "wss://wisp-server-workers.liammckeel.workers.dev/";
           const storage = {
             shortcuts: "clever.shortcuts.v1",
             favorites: "clever.favorites.v1",
@@ -189,6 +174,7 @@
           let history = read(storage.history, []);
           if (!Array.isArray(history)) history = [];
           let wisp = read(storage.wisp, DEFAULT_WISP);
+          if (wisp === "wss://wisp.mercurywork.shop/") { wisp = DEFAULT_WISP; write(storage.wisp, wisp); }
           let editing = false;
           let activePage = "Browse";
           let enginePromise = null;
@@ -491,8 +477,8 @@
           });
 
           function setBrowserVisible(visible) {
-            $("workspace").style.display = visible ? "none" : "flex";
-            $("browser").classList.toggle("show", visible);
+            $("workspace").style.display = "none";
+            $("browser").classList.add("show");
             if (visible) renderTabs();
           }
           function currentTab() { return tabs.find((tab) => tab.id === activeTabId) || null; }
@@ -517,6 +503,7 @@
             renderTabs();
             $("address").value = "";
             setProxyStatus("Enter a website address to begin.", false);
+            $("newtab-home").classList.remove("hidden");
             return tab;
           }
           function selectTab(id) {
@@ -527,7 +514,8 @@
             $("address").value = tab.url || "";
             setBrowserVisible(true);
             renderTabs();
-            setProxyStatus(tab.url ? "Loading " + tab.title + "…" : "Enter a website address to begin.", !tab.url);
+            $("newtab-home").classList.toggle("hidden", !!tab.url);
+            setProxyStatus(tab.url ? "Loading website…" : "Enter a website address to begin.", false);
           }
           function closeTab(id) {
             const index = tabs.findIndex((entry) => entry.id === id);
@@ -588,10 +576,11 @@
               tabs.forEach((entry) => { if (entry.iframe) entry.iframe.style.display = entry.id === tab.id ? "block" : "none"; });
               activeTabId = tab.id;
               tab.url = url;
-              tab.title = new URL(url).hostname;
+              tab.title = "a:b";
               $("address").value = url;
               renderTabs();
-              setProxyStatus("Loading " + tab.title + "…", true);
+              $("newtab-home").classList.add("hidden");
+              setProxyStatus("Loading website…", true);
               recordVisit(url);
               const navigation = tab.frame.go(url);
               if (navigation && typeof navigation.then === "function") await navigation;
@@ -611,35 +600,35 @@
           $("go-home").addEventListener("click", () => { setBrowserVisible(false); renderPage("Browse"); });
           $("new-tab").addEventListener("click", newTab);
           $("top-newtab").addEventListener("click", newTab);
-          $("top-search").addEventListener("click", () => {
-            if ($("browser").classList.contains("show")) $("address").focus();
-            else { const field = $("home-query"); if (field) field.focus(); }
-          });
-          $("top-menu").addEventListener("click", () => {
-            $("app").classList.add("menu-open");
-            $("menu-overlay").setAttribute("aria-hidden", "false");
-          });
-          $("menu-close").addEventListener("click", closeMenu);
-          function closeMenu() {
-            $("app").classList.remove("menu-open");
-            $("menu-overlay").setAttribute("aria-hidden", "true");
+          function openFullscreenSearch() {
+            $("fullscreen-search").classList.add("open");
+            $("fullscreen-search").setAttribute("aria-hidden","false");
+            setTimeout(() => $("fullscreen-query").focus(), 40);
           }
-          document.querySelectorAll("[data-page]").forEach((button) => button.addEventListener("click", () => {
+          function closeFullscreenSearch() {
+            $("fullscreen-search").classList.remove("open");
+            $("fullscreen-search").setAttribute("aria-hidden","true");
+          }
+          $("top-search").addEventListener("click", openFullscreenSearch);
+          $("search-dismiss").addEventListener("click", closeFullscreenSearch);
+          $("fullscreen-search").addEventListener("click", (event) => { if (event.target === $("fullscreen-search")) closeFullscreenSearch(); });
+          $("fullscreen-search-form").addEventListener("submit", (event) => {
+            event.preventDefault(); const query = $("fullscreen-query").value; closeFullscreenSearch(); openUrl(query, true);
+          });
+          $("newtab-search").addEventListener("submit", (event) => { event.preventDefault(); openUrl($("newtab-query").value, true); });
+                    document.querySelectorAll("[data-page]").forEach((button) => button.addEventListener("click", () => {
             setBrowserVisible(false);
             renderPage(button.dataset.page);
           }));
-          document.querySelectorAll("[data-menu-page]").forEach((button) => button.addEventListener("click", () => {
-            closeMenu();
-            setBrowserVisible(false);
-            renderPage(button.dataset.menuPage);
-          }));
-          document.addEventListener("keydown", (event) => {
+                    document.addEventListener("keydown", (event) => {
             if (event.key === "Escape") {
               if ($("modal-scrim").classList.contains("show")) hideShortcutDialog();
-              else if ($("app").classList.contains("menu-open")) closeMenu();
+              else closeFullscreenSearch();
             }
           });
           renderPage("Browse");
+          setBrowserVisible(true);
+          newTab();
         })();
       ]]></script>
     </body>
