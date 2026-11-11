@@ -82,7 +82,7 @@
                 <a class="shortcut" href="https://open.spotify.com/" target="_blank" rel="noopener"><span class="tile music"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"></circle><path d="M7.5 10.2c3.4-1 6.9-.6 9.5 1m-8.8 2c2.7-.7 5.4-.3 7.5.8m-6.8 2c1.9-.4 3.8-.2 5.4.6"></path></svg></span><span>Music</span></a>
               </nav>
             </div>
-            <section id="playPage" hidden>
+            <section id="playPage" hidden="hidden">
               <div class="view-head"><button class="back" data-back aria-label="Back"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m15 18-6-6 6-6"></path></svg></button><div><h1>Play</h1><p class="sub">A little break between everything else.</p></div></div>
               <div class="cards">
                 <article class="game"><div><div class="game-icon">◈</div><h3>Neon Drift</h3><p>Race through a glowing endless track.</p></div><span class="tag">Coming soon</span></article>
@@ -94,7 +94,7 @@
               </div>
               <p class="notice">These are sample game cards. Games are not playable yet.</p>
             </section>
-            <section id="aiPage" hidden>
+            <section id="aiPage" hidden="hidden">
               <div class="view-head"><button class="back" data-back aria-label="Back"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m15 18-6-6 6-6"></path></svg></button><div><h1>AI</h1><p class="sub">Choose an assistant and get thinking.</p></div></div>
               <div class="ai-grid">
                 <a class="ai-link" href="https://duck.ai/" target="_blank" rel="noopener"><span class="ai-mark">D.</span><span><strong>Duck.ai</strong><br/><small>Private AI chat</small></span></a>
