@@ -506,7 +506,7 @@
             }));
           }
           function newTab() {
-            const tab = { id:"tab-" + Date.now() + "-" + Math.random().toString(36).slice(2,7), title:"New tab", url:"", frame:null, iframe:null };
+            const tab = { id:"tab-" + Date.now() + "-" + Math.random().toString(36).slice(2,7), title:"a:b", url:"", frame:null, iframe:null };
             tabs.forEach((entry) => { if (entry.iframe) entry.iframe.style.display = "none"; });
             tabs.push(tab);
             activeTabId = tab.id;
