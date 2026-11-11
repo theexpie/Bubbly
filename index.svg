@@ -497,6 +497,7 @@
           }
           function newTab() {
             const tab = { id:"tab-" + Date.now() + "-" + Math.random().toString(36).slice(2,7), title:"New tab", url:"", frame:null, iframe:null };
+            tabs.forEach((entry) => { if (entry.iframe) entry.iframe.style.display = "none"; });
             tabs.push(tab);
             activeTabId = tab.id;
             setBrowserVisible(true);
@@ -523,7 +524,7 @@
             const removed = tabs[index];
             if (removed.iframe) removed.iframe.remove();
             tabs.splice(index, 1);
-            if (!tabs.length) { activeTabId = null; setBrowserVisible(false); renderPage("Browse"); return; }
+            if (!tabs.length) { activeTabId = null; newTab(); return; }
             if (activeTabId === id) {
               const next = tabs[Math.max(0, index - 1)];
               activeTabId = next.id;
@@ -565,7 +566,7 @@
                     const current = event.url ? String(event.url) : "";
                     if (current) {
                       tab.url = current;
-                      tab.title = (() => { try { return new URL(current).hostname; } catch { return current; } })();
+                      tab.title = "a:b";
                       if (tab.id === activeTabId) $("address").value = current;
                       renderTabs();
                       recordVisit(current);
@@ -597,7 +598,7 @@
           $("go-back").addEventListener("click", () => { const tab = currentTab(); if (tab && tab.frame && tab.frame.back) tab.frame.back(); });
           $("go-forward").addEventListener("click", () => { const tab = currentTab(); if (tab && tab.frame && tab.frame.forward) tab.frame.forward(); });
           $("go-reload").addEventListener("click", () => { const tab = currentTab(); if (tab && tab.frame && tab.frame.reload) tab.frame.reload(); else if (tab && tab.url) openUrl(tab.url, true); });
-          $("go-home").addEventListener("click", () => { setBrowserVisible(false); renderPage("Browse"); });
+          $("go-home").addEventListener("click", newTab);
           $("new-tab").addEventListener("click", newTab);
           $("top-newtab").addEventListener("click", newTab);
           function openFullscreenSearch() {
