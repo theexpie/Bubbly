@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#20252b">
+<title>Edupoint</title>
+<style>
+@font-face{font-family:Inter;src:url("./Inter.ttf") format("truetype");font-style:normal;font-weight:100 900;font-display:swap}
+:root{color-scheme:dark;--bg:#20252b;--panel:#292f36;--panel2:#303841;--line:#3c454e;--muted:#9aa5ae;--text:#f2f5f7;--cyan:#159db5;--cyan2:#83d8e5}
+*{box-sizing:border-box}html,body{margin:0;min-height:100%;font-family:Inter,system-ui,sans-serif;background:var(--bg);color:var(--text)}
+body{min-height:100vh;overflow-x:hidden;background:radial-gradient(ellipse at 50% 36%,rgba(21,157,181,.11),transparent 38%),linear-gradient(145deg,#20252b,#242a31 52%,#20252b)}
+button,input{font:inherit}button{color:inherit;cursor:pointer}
+.shell{min-height:100vh;display:flex;flex-direction:column;align-items:center;padding:clamp(40px,9vh,92px) 24px 20px;position:relative;isolation:isolate}
+.glow{position:absolute;z-index:-1;width:520px;height:320px;top:10%;left:50%;transform:translateX(-50%);background:rgba(21,157,181,.1);filter:blur(100px);pointer-events:none}
+main{width:min(920px,100%);margin:auto;animation:rise .55s cubic-bezier(.2,.8,.2,1) both}
+.brand{display:flex;justify-content:center;align-items:center;margin:0 0 34px}
+.brand img{display:block;width:min(390px,76vw);height:auto;object-fit:contain}
+.search-wrap{width:min(690px,100%);margin:auto}
+.search{height:62px;width:100%;display:flex;align-items:center;gap:14px;padding:0 20px 0 22px;border:1px solid #46515b;border-radius:19px;background:rgba(48,56,65,.86);box-shadow:0 16px 42px #0003,inset 0 1px #ffffff09;transition:border-color .22s,box-shadow .22s,transform .22s}
+.search:focus-within{border-color:#159db5;box-shadow:0 0 0 4px #159db51f,0 18px 48px #0004;transform:translateY(-1px)}
+.search svg{width:21px;height:21px;flex:none;color:#9aa8b2}
+.search input{min-width:0;flex:1;border:0;outline:0;background:transparent;color:var(--text);font-size:16px}
+.search input::placeholder{color:#89959f}
+.go{height:36px;padding:0 13px;border:0;border-radius:11px;background:var(--cyan);color:white;font-size:12px;font-weight:700;letter-spacing:.2px;transition:background .2s,transform .2s}
+.go:hover{background:#18aec8;transform:translateY(-1px)}
+.shortcuts{display:flex;justify-content:center;align-items:flex-start;gap:clamp(16px,3vw,34px);flex-wrap:wrap;margin-top:42px}
+.shortcut{width:76px;display:flex;flex-direction:column;align-items:center;gap:11px;text-decoration:none;color:#cbd2d8;font-size:12px;font-weight:550;cursor:pointer;transition:transform .2s,color .2s;background:none;border:0;padding:0}
+.shortcut:hover{transform:translateY(-4px);color:white}
+.tile{width:56px;height:56px;display:grid;place-items:center;border:1px solid #ffffff10;border-radius:18px;background:linear-gradient(145deg,#343d46,#293039);box-shadow:0 8px 20px #0003,inset 0 1px #ffffff0e;transition:border-color .2s,box-shadow .2s}
+.shortcut:hover .tile{border-color:#159db58c;box-shadow:0 10px 26px #0004,0 0 0 3px #159db514}
+.tile svg{width:25px;height:25px;stroke:currentColor;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.play{color:#83d8e5}.youtube{color:#ff7777}.ai{color:#c2b8ff}.discord{color:#a9a4ff}.music{color:#86d9a5}
+.footer{margin-top:auto;width:min(1120px,100%);display:flex;align-items:center;justify-content:space-between;padding-top:34px;color:#7f8b95;font-size:11px}
+.footer-brand{display:flex;align-items:center;gap:8px}.dot{width:6px;height:6px;border-radius:50%;background:var(--cyan);box-shadow:0 0 10px #159db5a6}
+.blank{border:0;background:transparent;color:#9ba6af;font-size:11px;padding:8px 0;cursor:pointer;transition:color .2s}.blank:hover{color:var(--cyan2)}
+.view{width:100%;animation:rise .35s ease both}
+[hidden]{display:none!important}
+.view-head{display:flex;align-items:center;gap:14px;margin:0 0 28px}
+.back{width:38px;height:38px;border:1px solid var(--line);border-radius:12px;background:var(--panel);display:grid;place-items:center;color:#c5cdd3}
+.back:hover{border-color:var(--cyan);color:white}
+h1{font-size:28px;letter-spacing:-1.1px;margin:0;font-weight:700}.sub{margin:5px 0 0;color:var(--muted);font-size:13px}
+.cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+.game{min-height:154px;padding:20px;border:1px solid var(--line);border-radius:18px;background:linear-gradient(145deg,#353f49e0,#282f37e8);display:flex;flex-direction:column;justify-content:space-between;box-shadow:0 12px 28px #0002}
+.game-icon{width:42px;height:42px;border-radius:13px;display:grid;place-items:center;background:#159db524;color:var(--cyan2);font-size:20px}
+.game h3{font-size:15px;margin:15px 0 4px}.game p{font-size:11px;color:var(--muted);margin:0}
+.tag{align-self:flex-start;margin-top:15px;border:1px solid #48535d;border-radius:999px;padding:5px 9px;color:#aeb8c0;font-size:10px}
+.ai-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+.ai-link{min-height:132px;padding:20px;text-decoration:none;color:var(--text);border:1px solid var(--line);border-radius:18px;background:linear-gradient(145deg,#343d46,#292f36);display:flex;flex-direction:column;justify-content:space-between;transition:transform .2s,border-color .2s}
+.ai-link:hover{transform:translateY(-3px);border-color:var(--cyan)}
+.ai-mark{font-size:23px;font-weight:750;color:var(--cyan2)}.ai-link strong{font-size:14px}.ai-link small{color:var(--muted);font-size:11px}
+.notice{margin-top:20px;color:#84919b;font-size:11px}
+.toast{position:fixed;bottom:26px;left:50%;transform:translate(-50%,12px);opacity:0;padding:11px 15px;border:1px solid #46535d;border-radius:12px;background:#303841;color:#eaf0f3;font-size:12px;box-shadow:0 12px 30px #0005;pointer-events:none;transition:opacity .2s,transform .2s;z-index:10}
+.toast.show{opacity:1;transform:translate(-50%,0)}
+@keyframes rise{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
+@media(max-width:620px){.shell{padding:52px 18px 18px}.brand{margin-bottom:27px}.brand img{width:min(330px,82vw)}.search{height:58px;padding:0 14px;border-radius:17px}.search input{font-size:14px}.go{height:34px;padding:0 10px}.shortcuts{gap:22px 16px;margin-top:34px}.shortcut{width:68px}.tile{width:54px;height:54px;border-radius:17px}.cards,.ai-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.footer{padding-top:25px}}
+@media(max-width:380px){.cards,.ai-grid{grid-template-columns:1fr}.shortcuts{gap:20px 10px}}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important;scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+<div class="shell">
+<div class="glow"></div>
+<main>
+<section id="home" class="view">
+<div class="brand"><img src="./Edupoint%20logogo.png" alt="Edupoint"></div>
+<form class="search-wrap" id="searchForm">
+<div class="search">
+<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.8" cy="10.8" r="6.8"></circle><path d="m16 16 4.5 4.5"></path></svg>
+<input id="searchInput" autocomplete="off" spellcheck="false" placeholder="Search or enter a URL" aria-label="Search or enter a URL">
+<button class="go" type="submit">GO</button>
+</div>
+</form>
+<nav class="shortcuts" aria-label="Shortcuts">
+<button class="shortcut" data-page="play"><span class="tile play"><svg viewBox="0 0 24 24"><path d="m9 6 10 6-10 6z"></path><path d="M4 5v14"></path></svg></span><span>Play</span></button>
+<a class="shortcut" href="https://www.youtube.com/" target="_blank" rel="noopener"><span class="tile youtube"><svg viewBox="0 0 24 24" fill="currentColor" stroke="none"><path d="M23 7.2a3 3 0 0 0-2.1-2.1C19 4.6 12 4.6 12 4.6s-7 0-8.9.5A3 3 0 0 0 1 7.2 31 31 0 0 0 .5 12 31 31 0 0 0 1 16.8a3 3 0 0 0 2.1 2.1c1.9.5 8.9.5 8.9.5s7 0 8.9-.5a3 3 0 0 0 2.1-2.1 31 31 0 0 0 .5-4.8 31 31 0 0 0-.5-4.8ZM9.6 15.5v-7l6.1 3.5-6.1 3.5Z"/></svg></span><span>YouTube</span></a>
+<button class="shortcut" data-page="ai"><span class="tile ai"><svg viewBox="0 0 24 24"><path d="M12 3v3m0 12v3M3 12h3m12 0h3M5.6 5.6l2.1 2.1m8.6 8.6 2.1 2.1m0-12.8-2.1 2.1m-8.6 8.6-2.1 2.1"></path><circle cx="12" cy="12" r="4"></circle></svg></span><span>AI</span></button>
+<a class="shortcut" href="https://discord.com/app" target="_blank" rel="noopener"><span class="tile discord"><svg viewBox="0 0 24 24" fill="currentColor" stroke="none"><path d="M19.7 5.3A18 18 0 0 0 15.2 4l-.6 1.2a16 16 0 0 0-5.2 0L8.8 4a18 18 0 0 0-4.5 1.3C1.5 9.5.7 13.6 1.1 17.6a18 18 0 0 0 5.5 2.8l1.2-2a11 11 0 0 1-1.9-.9l.5-.4a13 13 0 0 0 11.2 0l.5.4a11 11 0 0 1-1.9.9l1.2 2a18 18 0 0 0 5.5-2.8c.5-4.7-.8-8.7-3.2-12.3ZM8.7 14.8c-1 0-1.8-.9-1.8-2s.8-2 1.8-2 1.8.9 1.8 2-.8 2-1.8 2Zm6.6 0c-1 0-1.8-.9-1.8-2s.8-2 1.8-2 1.8.9 1.8 2-.8 2-1.8 2Z"/></svg></span><span>Discord</span></a>
+<a class="shortcut" href="https://open.spotify.com/" target="_blank" rel="noopener"><span class="tile music"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"></circle><path d="M7.5 10.2c3.4-1 6.9-.6 9.5 1m-8.8 2c2.7-.7 5.4-.3 7.5.8m-6.8 2c1.9-.4 3.8-.2 5.4.6"></path></svg></span><span>Music</span></a>
+</nav>
+</section>
+<section id="playPage" class="view" hidden>
+<div class="view-head"><button class="back" data-back aria-label="Back">←</button><div><h1>Play</h1><p class="sub">A little break between everything else.</p></div></div>
+<div class="cards">
+<article class="game"><div><div class="game-icon">◈</div><h3>Neon Drift</h3><p>Race through a glowing endless track.</p></div><span class="tag">Coming soon</span></article>
+<article class="game"><div><div class="game-icon">▦</div><h3>Block Party</h3><p>A tiny puzzle with a big brain.</p></div><span class="tag">Coming soon</span></article>
+<article class="game"><div><div class="game-icon">✳</div><h3>Orbit</h3><p>Find your rhythm and stay in orbit.</p></div><span class="tag">Coming soon</span></article>
+<article class="game"><div><div class="game-icon">⌁</div><h3>Wordcraft</h3><p>Build words, beat the clock.</p></div><span class="tag">Coming soon</span></article>
+<article class="game"><div><div class="game-icon">△</div><h3>Vector</h3><p>Think ahead. Make every move count.</p></div><span class="tag">Coming soon</span></article>
+<article class="game"><div><div class="game-icon">◎</div><h3>Memory Lane</h3><p>How much can you remember?</p></div><span class="tag">Coming soon</span></article>
+</div><p class="notice">These are sample game cards. Games are not playable yet.</p>
+</section>
+<section id="aiPage" class="view" hidden>
+<div class="view-head"><button class="back" data-back aria-label="Back">←</button><div><h1>AI</h1><p class="sub">Choose an assistant and get thinking.</p></div></div>
+<div class="ai-grid">
+<a class="ai-link" href="https://duck.ai/" target="_blank" rel="noopener"><span class="ai-mark">D.</span><span><strong>Duck.ai</strong><br><small>Private AI chat</small></span></a>
+<a class="ai-link" href="https://chatgpt.com/" target="_blank" rel="noopener"><span class="ai-mark">✳</span><span><strong>ChatGPT</strong><br><small>Ideas, answers, and more</small></span></a>
+<a class="ai-link" href="https://claude.ai/" target="_blank" rel="noopener"><span class="ai-mark">✳</span><span><strong>Claude</strong><br><small>Think, write, and create</small></span></a>
+</div>
+</section>
+</main>
+<footer class="footer"><div class="footer-brand"><span class="dot"></span><span>Edupoint</span></div><button class="blank" id="blankButton" type="button">about:blank</button></footer>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+</div>
+<script>
+(() => {
+const home=document.getElementById('home'),play=document.getElementById('playPage'),ai=document.getElementById('aiPage');
+const toast=document.getElementById('toast');let toastTimer;
+function notify(message){toast.textContent=message;toast.classList.add('show');clearTimeout(toastTimer);toastTimer=setTimeout(()=>toast.classList.remove('show'),2400)}
+function showPage(name){home.hidden=name!=='home';play.hidden=name!=='play';ai.hidden=name!=='ai';document.title=name==='home'?'Edupoint':name==='play'?'Play — Edupoint':'AI — Edupoint'}
+document.querySelectorAll('[data-page]').forEach(el=>el.addEventListener('click',()=>showPage(el.dataset.page)));
+document.querySelectorAll('[data-back]').forEach(el=>el.addEventListener('click',()=>showPage('home')));
+document.getElementById('searchForm').addEventListener('submit',e=>{
+e.preventDefault();const value=document.getElementById('searchInput').value.trim();if(!value)return;
+const target=/^https?:\/\//i.test(value)?value:/^[\w-]+(\.[\w-]+)+(\/.*)?$/i.test(value)?'https://'+value:'https://duckduckgo.com/?q='+encodeURIComponent(value);
+window.open(target,'_blank','noopener');
+});
+document.getElementById('blankButton').addEventListener('click',()=>{
+const tab=window.open('about:blank','_blank');if(!tab){notify('Allow pop-ups to open a blank tab.');return;}
+try{tab.document.title='about:blank';tab.document.body.style.cssText='margin:0;overflow:hidden';const frame=tab.document.createElement('iframe');frame.src=window.location.href;frame.style.cssText='position:fixed;inset:0;width:100%;height:100%;border:0;margin:0;padding:0';tab.document.body.appendChild(frame)}catch(error){notify('The blank tab opened, but embedding was blocked.')}
+});
+showPage('home');
+})();
+</script>
+</body>
+</html>
