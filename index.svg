@@ -615,7 +615,7 @@ html,body,#app{background:#090b10!important;color:#edf0f6!important}
             history = [{ url:parsed.href, title:parsed.hostname, time:Date.now() }, ...history.filter((item) => item.url !== parsed.href)].slice(0, 100);
             persistAll();
           }
-          async async async function openUrl(raw, reuse) {
+          async function openUrl(raw, reuse) {
             let url;
             try { url = normalizeAddress(raw); }
             catch (error) { notify(error.message); return; }
