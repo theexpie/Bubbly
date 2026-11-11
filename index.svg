@@ -46,7 +46,7 @@
                 <form id="address-form"><input id="address" class="address" placeholder="Search or enter a URL" autocomplete="url" spellcheck="false"/></form>
                 <button class="tool new-tab-tool" id="new-tab" title="New tab" aria-label="New tab">＋</button>
               </div>
-              <div class="frame-stage" id="frame-stage">
+              <div class="frame-stage" id="frame-stage"><button class="exit-fullscreen" id="exit-fullscreen" type="button" aria-label="Exit fullscreen">↙ <span>Exit fullscreen</span></button>
                 <div class="newtab-home" id="newtab-home"><div class="newtab-brand"><span class="brandmark">C</span><strong>Clever</strong></div><p>A quieter place to browse.</p><form class="newtab-search" id="newtab-search"><input id="newtab-query" placeholder="Search or enter a website" autocomplete="off"/><button aria-label="Search">↵</button></form></div>
                 <div class="proxy-status" id="proxy-status"><span class="spinner"></span><span id="proxy-status-text">Enter a website address to begin.</span></div>
               </div>
@@ -95,6 +95,15 @@
         @media(prefers-reduced-motion:reduce){*{animation-duration:.01ms!important;transition-duration:.01ms!important}}
 
 :root{color-scheme:dark}html,body,#app{background:#0b0d11!important;color:#e8ebf1!important}#app{min-height:360px}.topbar{height:58px;background:#101318;border-bottom:1px solid #272c35;padding:0 18px;box-shadow:0 1px 0 #ffffff05}.brand{color:#f4f6fa;font-size:19px}.brandmark{border-color:#596273;color:#f4f6fa;border-radius:9px}.top-action{color:#c6ccd6}.top-action:hover,.top-action.active{background:#242a34}.shell,.main,.workspace,.content{background:#0b0d11!important}.sidebar,.workspace{display:none!important}.browser{display:flex!important;background:#0b0d11!important}.browser-toolbar{height:52px;background:#11151b;border-bottom:1px solid #282e38;padding:7px 12px;gap:7px}.tabstrip{height:39px;background:#0e1116;border-color:#282e38;padding-left:12px}.tab{background:#171c24;border-color:#2b323d;color:#aeb7c5;border-radius:8px 8px 0 0;transition:background .2s,border-color .2s,color .2s,transform .2s}.tab.active{background:#202631;color:#f4f6fa;border-color:#3a4351}.tab-close{color:#8993a2}.tool{color:#b8c1ce;border-radius:9px;transition:background .18s,transform .18s}.tool:hover{background:#252c37;color:#fff}.tool:active{transform:scale(.9)}.address{height:36px;background:#1b212b;border:1px solid #303846;color:#eef2f7;border-radius:11px;padding:0 14px;font-size:13px;transition:border .18s,background .18s,box-shadow .18s}.address:focus{background:#202733;border-color:#7588a5;box-shadow:0 0 0 3px #8096b51f}.frame-stage{background:#0b0d11}.site-frame{background:#fff}.proxy-status{background:#0b0d11;color:#9ca7b7}.spinner{border-color:#343d4a;border-top-color:#a8b8d0}.newtab-home{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:24px;background:radial-gradient(ellipse at 50% 42%,#1b2432 0%,#0b0d11 56%);color:#e8ebf1;transition:opacity .25s,transform .25s}.newtab-home.hidden{opacity:0;pointer-events:none;transform:translateY(8px)}.newtab-brand{display:flex;align-items:center;gap:12px;font-size:30px;letter-spacing:-1px}.newtab-brand .brandmark{width:45px;height:45px;font-size:27px}.newtab-home p{font-size:13px;color:#8e99aa;margin:14px 0 25px}.newtab-search{display:flex;width:min(620px,100%);height:54px;padding:5px;background:#1a202a;border:1px solid #343d4a;border-radius:15px;box-shadow:0 12px 45px #0005;transition:border .2s,box-shadow .2s}.newtab-search:focus-within{border-color:#71839e;box-shadow:0 0 0 4px #8096b51b,0 12px 45px #0005}.newtab-search input{min-width:0;flex:1;border:0;outline:0!important;background:transparent;color:#f4f6fa;padding:0 13px;font-size:14px}.newtab-search input::placeholder{color:#7f8a9a}.newtab-search button,.fullscreen-search-field button{width:43px;border:0;border-radius:11px;background:#dbe4f2;color:#141a23;font-size:20px;transition:transform .16s,background .16s}.newtab-search button:active,.fullscreen-search-field button:active{transform:scale(.92)}.fullscreen-search{position:absolute;z-index:25;inset:0;background:#090b0ff2;backdrop-filter:blur(20px);display:flex;align-items:flex-start;justify-content:center;padding:15vh 22px 30px;opacity:0;visibility:hidden;transform:translateY(12px);transition:opacity .24s,transform .24s,visibility .24s}.fullscreen-search.open{opacity:1;visibility:visible;transform:none}.fullscreen-search form{width:min(760px,100%);position:relative}.fullscreen-search label{display:block;font-size:clamp(25px,5vw,38px);font-weight:650;letter-spacing:-1.2px;margin:0 0 25px;color:#f1f4f9}.search-dismiss{position:absolute;right:0;top:-65px;width:42px;height:42px;border:1px solid #333c49;border-radius:50%;background:#171d26;color:#dce3ed;font-size:24px}.fullscreen-search-field{height:64px;display:flex;gap:8px;padding:6px;background:#1a202a;border:1px solid #3a4554;border-radius:16px;box-shadow:0 15px 50px #0006}.fullscreen-search-field input{min-width:0;flex:1;border:0;outline:0!important;background:transparent;color:#f4f6fa;padding:0 14px;font-size:16px}.fullscreen-search-field input::placeholder{color:#8994a4}.fullscreen-search-field button{width:50px}.modal-scrim{background:#000a;backdrop-filter:blur(8px)}.modal{background:#171c24;color:#edf1f7;border:1px solid #303846}.modal h2,.field label{color:#edf1f7}.modal p,.form-error{color:#a5afbd}.field input,.setting-input{background:#10151c;border-color:#343d49;color:#f1f4f8}.secondary{background:#202631;border-color:#3b4553;color:#e5eaf1}.primary{background:#dbe4f2;color:#151b24}.toast{background:#e0e7f1;color:#10151c}.browser{animation:surface-in .32s ease both}@keyframes surface-in{from{opacity:0;transform:translateY(5px)}to{opacity:1;transform:none}}@media(max-width:620px){.topbar{height:54px;padding:0 12px}.brand{font-size:18px}.top-action{min-width:40px;width:40px}.browser-toolbar{padding:6px 7px;gap:3px}.tool{width:30px;height:32px}.tab{min-width:76px;max-width:125px}.newtab-brand{font-size:27px}.fullscreen-search{padding:17vh 16px 24px}}
+/* Immersive proxy mode */
+#browser.immersive .tabstrip,#browser.immersive .browser-toolbar{display:none!important}
+#browser.immersive .frame-stage{position:absolute!important;inset:0!important;width:100%!important;height:100%!important;z-index:8!important;background:#000!important}
+#browser.immersive .site-frame{position:absolute!important;inset:0!important;width:100%!important;height:100%!important;border:0!important}
+#browser.immersive .newtab-home{display:none!important}
+.exit-fullscreen{display:none;position:absolute;z-index:30;top:14px;right:14px;align-items:center;justify-content:center;gap:8px;height:40px;padding:0 15px;border:1px solid #ffffff32;border-radius:12px;background:#171b22e8;color:#f5f7fb;font-size:13px;font-weight:600;box-shadow:0 5px 25px #0005;backdrop-filter:blur(16px);transition:background .18s,transform .18s}
+#browser.immersive .exit-fullscreen{display:flex}
+.exit-fullscreen:hover{background:#303844;transform:translateY(-1px)}
+@media(max-width:620px){.exit-fullscreen{top:10px;right:10px;height:38px;padding:0 12px}}
       ]]></style>
 
       <script><![CDATA[
@@ -482,6 +491,7 @@
             if (visible) renderTabs();
           }
           function currentTab() { return tabs.find((tab) => tab.id === activeTabId) || null; }
+          function setImmersive(enabled) { $("browser").classList.toggle("immersive", !!enabled); $("exit-fullscreen").setAttribute("aria-hidden", enabled ? "false" : "true"); }
           function renderTabs() {
             $("tabstrip").innerHTML = tabs.map((tab) => {
               return '<button class="tab ' + (tab.id === activeTabId ? "active" : "") + '" data-tab="' + tab.id + '"><span class="tab-title">' + escapeHTML(tab.title) + '</span><span class="tab-close" data-close-tab="' + tab.id + '">×</span></button>';
@@ -505,6 +515,7 @@
             $("address").value = "";
             setProxyStatus("Enter a website address to begin.", false);
             $("newtab-home").classList.remove("hidden");
+            setImmersive(false);
             return tab;
           }
           function selectTab(id) {
@@ -514,6 +525,7 @@
             tabs.forEach((entry) => { if (entry.iframe) entry.iframe.style.display = entry.id === id ? "block" : "none"; });
             $("address").value = tab.url || "";
             setBrowserVisible(true);
+            setImmersive(!!tab.url);
             renderTabs();
             $("newtab-home").classList.toggle("hidden", !!tab.url);
             setProxyStatus(tab.url ? "Loading website…" : "Enter a website address to begin.", false);
@@ -544,6 +556,9 @@
             setBrowserVisible(true);
             let tab = reuse ? currentTab() : null;
             if (!tab) tab = currentTab() || newTab();
+            setBrowserVisible(true);
+            setImmersive(true);
+            closeFullscreenSearch();
             setProxyStatus("Starting the proxy…", true);
             $("address").value = url;
             try {
@@ -599,6 +614,7 @@
           $("go-forward").addEventListener("click", () => { const tab = currentTab(); if (tab && tab.frame && tab.frame.forward) tab.frame.forward(); });
           $("go-reload").addEventListener("click", () => { const tab = currentTab(); if (tab && tab.frame && tab.frame.reload) tab.frame.reload(); else if (tab && tab.url) openUrl(tab.url, true); });
           $("go-home").addEventListener("click", newTab);
+          $("exit-fullscreen").addEventListener("click", () => setImmersive(false));
           $("new-tab").addEventListener("click", newTab);
           $("top-newtab").addEventListener("click", newTab);
           function openFullscreenSearch() {
