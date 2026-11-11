@@ -6,8 +6,8 @@
         <header class="topbar">
           <div class="brand"><span class="brandmark">C</span><span>Clever</span></div>
           <div class="top-actions">
-            <button class="top-action" id="top-search" aria-label="Focus search"><svg viewBox="0 0 24 24"><circle cx="10.8" cy="10.8" r="6.8"/><path d="m16 16 5 5"/></svg><span>Search</span></button>
-            <button class="top-action" id="top-newtab" aria-label="New tab"><svg viewBox="0 0 24 24"><rect x="4" y="5" width="16" height="15" rx="2"/><path d="M8 5V3h12v14"/></svg><span>New tab</span></button>
+            <button class="top-action" id="top-search" aria-label="Focus search"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><circle cx="10.8" cy="10.8" r="6.8"/><path d="m16 16 5 5"/></svg><span>Search</span></button>
+            <button class="top-action" id="top-newtab" aria-label="New tab"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><rect x="4" y="5" width="16" height="15" rx="2"/><path d="M8 5V3h12v14"/></svg><span>New tab</span></button>
             <button class="top-action menu-trigger" id="top-menu" aria-label="Open menu"><span class="hamb"><i></i><i></i><i></i></span><span>Menu</span></button>
           </div>
         </header>
@@ -15,16 +15,16 @@
         <div class="shell">
           <aside class="sidebar">
             <div class="nav-label">Workspace</div>
-            <button class="nav-item active" data-page="Browse"><svg viewBox="0 0 24 24"><path d="m3 10 9-7 9 7v10H3z"/><path d="M9 20v-8h6v8"/></svg>Browse</button>
-            <button class="nav-item" data-page="Favorites"><svg viewBox="0 0 24 24"><path d="M20.8 8.8c0 5.1-8.8 11-8.8 11S3.2 13.9 3.2 8.8A4.8 4.8 0 0 1 12 6.1a4.8 4.8 0 0 1 8.8 2.7z"/></svg>Favorites</button>
-            <button class="nav-item" data-page="History"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>History</button>
-            <button class="nav-item" data-page="Downloads"><svg viewBox="0 0 24 24"><path d="M12 3v12m-5-5 5 5 5-5"/><path d="M4 17v3h16v-3"/></svg>Downloads</button>
+            <button class="nav-item active" data-page="Browse"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m3 10 9-7 9 7v10H3z"/><path d="M9 20v-8h6v8"/></svg>Browse</button>
+            <button class="nav-item" data-page="Favorites"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.8 8.8c0 5.1-8.8 11-8.8 11S3.2 13.9 3.2 8.8A4.8 4.8 0 0 1 12 6.1a4.8 4.8 0 0 1 8.8 2.7z"/></svg>Favorites</button>
+            <button class="nav-item" data-page="History"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>History</button>
+            <button class="nav-item" data-page="Downloads"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 3v12m-5-5 5 5 5-5"/><path d="M4 17v3h16v-3"/></svg>Downloads</button>
             <div class="nav-separator"></div>
             <div class="nav-label">Explore</div>
-            <button class="nav-item" data-page="Resources"><svg viewBox="0 0 24 24" class="books-icon"><path d="M3 7.2 8.5 5v14L3 21zM9.3 5.2l5.2-2v14l-5.2 2zM15 4.7 21 3v14l-6 1.7z"/><path d="M4.4 10.2 7 9.4m4-2.1 2.2-.8m4.1 2 2.2-.6"/></svg>Resources</button>
-            <button class="nav-item" data-page="Apps"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="8" height="8" rx="1.5"/><rect x="13" y="3" width="8" height="8" rx="1.5"/><rect x="3" y="13" width="8" height="8" rx="1.5"/><rect x="13" y="13" width="8" height="8" rx="1.5"/></svg>Apps</button>
+            <button class="nav-item" data-page="Resources"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="books-icon"><path d="M3 7.2 8.5 5v14L3 21zM9.3 5.2l5.2-2v14l-5.2 2zM15 4.7 21 3v14l-6 1.7z"/><path d="M4.4 10.2 7 9.4m4-2.1 2.2-.8m4.1 2 2.2-.6"/></svg>Resources</button>
+            <button class="nav-item" data-page="Apps"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><rect x="3" y="3" width="8" height="8" rx="1.5"/><rect x="13" y="3" width="8" height="8" rx="1.5"/><rect x="3" y="13" width="8" height="8" rx="1.5"/><rect x="13" y="13" width="8" height="8" rx="1.5"/></svg>Apps</button>
             <div class="nav-separator"></div>
-            <button class="nav-item" data-page="Settings"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="m19.4 15 .1.1 1.3 1-1.4 2.4-1.6-.6a8 8 0 0 1-1.5.9l-.3 1.7h-2.8l-.3-1.7a8 8 0 0 1-1.5-.9l-1.6.6-1.4-2.4 1.3-1a7 7 0 0 1 0-1.8l-1.3-1 1.4-2.4 1.6.6a8 8 0 0 1 1.5-.9l.3-1.7h2.8l.3 1.7a8 8 0 0 1 1.5.9l1.6-.6 1.4 2.4-1.3 1a7 7 0 0 1 0 1.7z"/></svg>Settings</button>
+            <button class="nav-item" data-page="Settings"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="m19.4 15 .1.1 1.3 1-1.4 2.4-1.6-.6a8 8 0 0 1-1.5.9l-.3 1.7h-2.8l-.3-1.7a8 8 0 0 1-1.5-.9l-1.6.6-1.4-2.4 1.3-1a7 7 0 0 1 0-1.8l-1.3-1 1.4-2.4 1.6.6a8 8 0 0 1 1.5-.9l.3-1.7h2.8l.3 1.7a8 8 0 0 1 1.5.9l1.6-.6 1.4 2.4-1.3 1a7 7 0 0 1 0 1.7z"/></svg>Settings</button>
             <div class="sidebar-foot">Clever Proxy</div>
           </aside>
 
@@ -199,12 +199,12 @@
           let activeTabId = null;
           let toastTimer = null;
 
-          const bookStack = '<svg viewBox="0 0 24 24"><path d="M3 7.2 8.5 5v14L3 21zM9.3 5.2l5.2-2v14l-5.2 2zM15 4.7 21 3v14l-6 1.7z"/><path d="M4.4 10.2 7 9.4m4-2.1 2.2-.8m4.1 2 2.2-.6"/></svg>';
+          const bookStack = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 7.2 8.5 5v14L3 21zM9.3 5.2l5.2-2v14l-5.2 2zM15 4.7 21 3v14l-6 1.7z"/><path d="M4.4 10.2 7 9.4m4-2.1 2.2-.8m4.1 2 2.2-.6"/></svg>';
           const icons = {
-            movy:'<svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m10 9 5 3-5 3z"/></svg>',
+            movy:'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m10 9 5 3-5 3z"/></svg>',
             books:bookStack,
-            apps:'<svg viewBox="0 0 24 24"><rect x="3" y="3" width="8" height="8" rx="1.5"/><rect x="13" y="3" width="8" height="8" rx="1.5"/><rect x="3" y="13" width="8" height="8" rx="1.5"/><rect x="13" y="13" width="8" height="8" rx="1.5"/></svg>',
-            custom:'<svg viewBox="0 0 24 24"><path d="M10 13a5 5 0 0 0 7.1 0l2-2a5 5 0 0 0-7.1-7.1"/><path d="M14 11a5 5 0 0 0-7.1 0l-2 2a5 5 0 0 0 7.1 7.1"/></svg>'
+            apps:'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><rect x="3" y="3" width="8" height="8" rx="1.5"/><rect x="13" y="3" width="8" height="8" rx="1.5"/><rect x="3" y="13" width="8" height="8" rx="1.5"/><rect x="13" y="13" width="8" height="8" rx="1.5"/></svg>',
+            custom:'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 13a5 5 0 0 0 7.1 0l2-2a5 5 0 0 0-7.1-7.1"/><path d="M14 11a5 5 0 0 0-7.1 0l-2 2a5 5 0 0 0 7.1 7.1"/></svg>'
           };
           function notify(message) {
             $("toast").textContent = message;
@@ -366,7 +366,7 @@
             document.querySelectorAll(".nav-item").forEach((button) => button.classList.toggle("active", button.dataset.page === page));
             let html = "";
             if (page === "Browse") {
-              html = '<form class="search-wrap" id="home-search"><svg viewBox="0 0 24 24"><circle cx="10.8" cy="10.8" r="6.8"/><path d="m16 16 5 5"/></svg><input id="home-query" placeholder="Search or enter a URL" autocomplete="url"/><button class="search-go" aria-label="Search">➜</button></form>' +
+              html = '<form class="search-wrap" id="home-search"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><circle cx="10.8" cy="10.8" r="6.8"/><path d="m16 16 5 5"/></svg><input id="home-query" placeholder="Search or enter a URL" autocomplete="url"/><button class="search-go" aria-label="Search">➜</button></form>' +
                 '<section class="section"><div class="section-head"><h2>Shortcuts</h2><button class="edit-btn" id="edit-shortcuts">' + (editing ? "Done" : "Edit") + '</button></div><div id="shortcut-list"></div></section>' +
                 '<section class="section"><div class="section-head"><h2>Resources</h2><button class="edit-btn" data-go-page="Resources">View all</button></div>' + renderResourceCards(resourceItems) + '</section>' +
                 '<section class="section"><div class="section-head"><h2>Recent browsing</h2><button class="edit-btn" data-go-page="History">View history</button></div>' +
