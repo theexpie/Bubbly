@@ -144,6 +144,29 @@ html,body,#app{background:#090b10!important;color:#edf0f6!important}
 .exit-fullscreen:hover{background:#303844;transform:translateY(-1px)}
 .exit-fullscreen:active{transform:scale(.96)}
 @media(max-width:620px){.browser.show{inset:58px 0 0!important;height:calc(100% - 58px)!important}.topbar{height:58px!important}#app.immersive .browser.show{inset:0!important;height:100%!important}.exit-fullscreen{top:10px;right:10px;height:38px;padding:0 12px}}
+        .sidebar{display:none!important}
+        .clever-home-page .content{display:flex;align-items:flex-start;justify-content:center;padding:clamp(52px,13vh,150px) 24px 40px}
+        .clever-home-page .page-heading{display:none}
+        .clever-home{width:min(100%,720px);margin:0 auto}
+        .clever-wordmark{text-align:center;font-size:clamp(42px,7vw,66px);font-weight:760;letter-spacing:-3px;color:#f4f6fb;margin:0 0 30px}
+        .clever-home .search-wrap{max-width:none;height:54px;border-radius:14px;background:#171b24;border:1px solid #343b49;margin:0 0 34px;padding:5px 8px 5px 17px}
+        .clever-home .search-wrap input{color:#f5f7fb;font-size:15px}
+        .clever-home .search-wrap input::placeholder{color:#929baa}
+        .clever-home .search-wrap svg{stroke:#9ba6b7}
+        .clever-home .search-go{height:40px;width:42px;border-radius:10px}
+        .clever-home .section-head h2{color:#e9edf5}
+        .clever-home .edit-btn{color:#9ebcff}
+        .clever-home .shortcut-card{background:#171b24;border-color:#303847;color:#e8edf5}
+        .clever-home .shortcut-copy strong{color:#eef2f8}
+        .clever-home .shortcut-copy small{color:#9ba6b7}
+        .clever-home .add-shortcut{background:#151922;border-color:#59677c}
+        .cloak-mode,.cloak-mode #app{background:#080a0f!important;color:#fff!important}
+        .cloak-mode .topbar,.cloak-mode .workspace,.cloak-mode .sidebar,.cloak-mode .tabstrip,.cloak-mode .browser-toolbar{display:none!important}
+        .cloak-mode .shell,.cloak-mode .main,.cloak-mode .browser{display:flex!important;position:fixed!important;inset:0!important;width:100vw!important;height:100vh!important;z-index:9999!important;background:#080a0f!important}
+        .cloak-mode .frame-stage{position:absolute!important;inset:0!important}
+        .cloak-mode .site-frame{position:absolute!important;inset:0!important;width:100%!important;height:100%!important}
+        .cloak-mode .exit-fullscreen{display:flex!important;position:fixed!important;z-index:10001!important;top:14px!important;right:14px!important}
+        .cloak-mode .proxy-status{background:#080a0f!important;color:#c5ccda!important}
       ]]></style>
 
       <script><![CDATA[
@@ -401,12 +424,9 @@ html,body,#app{background:#090b10!important;color:#edf0f6!important}
             document.querySelectorAll(".nav-item").forEach((button) => button.classList.toggle("active", button.dataset.page === page));
             let html = "";
             if (page === "Browse") {
-              html = '<form class="search-wrap" id="home-search"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><circle cx="10.8" cy="10.8" r="6.8"/><path d="m16 16 5 5"/></svg><input id="home-query" placeholder="Search or enter a URL" autocomplete="url"/><button class="search-go" aria-label="Search">➜</button></form>' +
-                '<section class="section"><div class="section-head"><h2>Shortcuts</h2><button class="edit-btn" id="edit-shortcuts">' + (editing ? "Done" : "Edit") + '</button></div><div id="shortcut-list"></div></section>' +
-                '<section class="section"><div class="section-head"><h2>Resources</h2><button class="edit-btn" data-go-page="Resources">View all</button></div>' + renderResourceCards(resourceItems) + '</section>' +
-                '<section class="section"><div class="section-head"><h2>Recent browsing</h2><button class="edit-btn" data-go-page="History">View history</button></div>' +
-                (history.length ? renderHistory().replace("history-list", "history-list compact") : '<div class="empty-state"><strong>Nothing here yet</strong>Open a website to start building your browsing history.</div>') +
-                '</section>';
+              $("workspace").classList.add("clever-home-page");
+              html = '<div class="clever-home"><div class="clever-wordmark">Clever</div><form class="search-wrap" id="home-search"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><circle cx="10.8" cy="10.8" r="6.8"/><path d="m16 16 5 5"/></svg><input id="home-query" placeholder="Search or enter a URL" autocomplete="url"/><button class="search-go" aria-label="Search">➜</button></form>' +
+                '<section class="section"><div class="section-head"><h2>Shortcuts</h2><button class="edit-btn" id="edit-shortcuts">' + (editing ? "Done" : "Edit") + '</button></div><div id="shortcut-list"></div></section></div>';
             } else if (page === "Favorites") {
               html = '<section class="section"><div class="section-head"><h2>Favorite resources</h2></div>' + renderResourceCards(resourceItems.filter((item) => resourceIsFavorite(item.id))) + '</section>';
             } else if (page === "History") {
@@ -655,8 +675,23 @@ html,body,#app{background:#090b10!important;color:#edf0f6!important}
           $("go-reload").addEventListener("click", () => { const tab = currentTab(); if (tab && tab.frame && tab.frame.reload) tab.frame.reload(); else if (tab && tab.url) openUrl(tab.url, true); });
           $("go-home").addEventListener("click", newTab);
           $("exit-fullscreen").addEventListener("click", () => setImmersive(false));
-          $("new-tab").addEventListener("click", newTab);
-          $("top-newtab").addEventListener("click", newTab);
+          function cloakCurrentSiteInRealTab() {
+            const current = currentTab();
+            const target = current && current.url ? current.url : "";
+            if (!target) { notify("Open a website first, then use Cloak (new tab)."); return; }
+            const cloakPage = new URL(location.href);
+            cloakPage.search = "";
+            cloakPage.hash = "";
+            cloakPage.searchParams.set("cloak", "1");
+            cloakPage.searchParams.set("url", target);
+            const popup = window.open(cloakPage.href, "_blank");
+            if (!popup) { notify("Your browser blocked the new tab. Allow pop-ups for Clever and try again."); return; }
+            renderPage("Browse");
+            setBrowserVisible(false);
+            setImmersive(false);
+          }
+          $("new-tab").addEventListener("click", cloakCurrentSiteInRealTab);
+          $("top-newtab").addEventListener("click", cloakCurrentSiteInRealTab);
           function openFullscreenSearch() {
             $("fullscreen-search").classList.add("open");
             $("fullscreen-search").setAttribute("aria-hidden","false");
@@ -683,9 +718,18 @@ html,body,#app{background:#090b10!important;color:#edf0f6!important}
               else closeFullscreenSearch();
             }
           });
+          const cloakParams = new URLSearchParams(location.search);
+          const cloakTarget = cloakParams.get("cloak") === "1" ? cloakParams.get("url") : "";
+          if (cloakTarget) {
+            document.title = "a:b";
+            document.body.classList.add("cloak-mode");
+          }
           renderPage("Browse");
           setBrowserVisible(true);
           newTab();
+          if (cloakTarget) {
+            openUrl(cloakTarget, true);
+          }
         })();
       ]]></script>
     </body>
