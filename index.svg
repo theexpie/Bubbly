@@ -144,6 +144,7 @@ html,body,#app{background:#090b10!important;color:#edf0f6!important}
 .exit-fullscreen:hover{background:#303844;transform:translateY(-1px)}
 .exit-fullscreen:active{transform:scale(.96)}
 @media(max-width:620px){.browser.show{inset:58px 0 0!important;height:calc(100% - 58px)!important}.topbar{height:58px!important}#app.immersive .browser.show{inset:0!important;height:100%!important}.exit-fullscreen{top:10px;right:10px;height:38px;padding:0 12px}}
+        #app.home-mode,#app.home-mode .shell,#app.home-mode .main,#app.home-mode .workspace,#app.home-mode .content{background:#0c0f15!important;color:#f4f6fb!important}
         .sidebar{display:none!important}
         .clever-home-page .content{display:flex;align-items:flex-start;justify-content:center;padding:clamp(52px,13vh,150px) 24px 40px}
         .clever-home-page .page-heading{display:none}
@@ -160,13 +161,13 @@ html,body,#app{background:#090b10!important;color:#edf0f6!important}
         .clever-home .shortcut-copy strong{color:#eef2f8}
         .clever-home .shortcut-copy small{color:#9ba6b7}
         .clever-home .add-shortcut{background:#151922;border-color:#59677c}
-        .cloak-mode,.cloak-mode #app{background:#080a0f!important;color:#fff!important}
-        .cloak-mode .topbar,.cloak-mode .workspace,.cloak-mode .sidebar,.cloak-mode .tabstrip,.cloak-mode .browser-toolbar{display:none!important}
-        .cloak-mode .shell,.cloak-mode .main,.cloak-mode .browser{display:flex!important;position:fixed!important;inset:0!important;width:100vw!important;height:100vh!important;z-index:9999!important;background:#080a0f!important}
-        .cloak-mode .frame-stage{position:absolute!important;inset:0!important}
-        .cloak-mode .site-frame{position:absolute!important;inset:0!important;width:100%!important;height:100%!important}
-        .cloak-mode .exit-fullscreen{display:flex!important;position:fixed!important;z-index:10001!important;top:14px!important;right:14px!important}
-        .cloak-mode .proxy-status{background:#080a0f!important;color:#c5ccda!important}
+        #app.cloak-mode,#app.cloak-mode .shell,#app.cloak-mode .main,#app.cloak-mode .browser{background:#080a0f!important;color:#fff!important}
+        #app.cloak-mode .topbar,#app.cloak-mode .workspace,#app.cloak-mode .sidebar,#app.cloak-mode .tabstrip,#app.cloak-mode .browser-toolbar{display:none!important}
+        #app.cloak-mode .shell,#app.cloak-mode .main,#app.cloak-mode .browser{display:flex!important;position:fixed!important;inset:0!important;width:100vw!important;height:100vh!important;z-index:9999!important;background:#080a0f!important}
+        #app.cloak-mode .frame-stage{position:absolute!important;inset:0!important}
+        #app.cloak-mode .site-frame{position:absolute!important;inset:0!important;width:100%!important;height:100%!important}
+        #app.cloak-mode .exit-fullscreen{display:flex!important;position:fixed!important;z-index:10001!important;top:14px!important;right:14px!important}
+        #app.cloak-mode .proxy-status{background:#080a0f!important;color:#c5ccda!important}
       ]]></style>
 
       <script><![CDATA[
@@ -409,6 +410,8 @@ html,body,#app{background:#090b10!important;color:#edf0f6!important}
           }
           function renderPage(page) {
             activePage = page;
+            $("workspace").classList.toggle("clever-home-page", page === "Browse");
+            $("app").classList.toggle("home-mode", page === "Browse");
             const meta = {
               Browse:["Browse","Search the web and jump back into your favorite places."],
               Favorites:["Favorites","Your saved resources, all in one place."],
@@ -424,7 +427,6 @@ html,body,#app{background:#090b10!important;color:#edf0f6!important}
             document.querySelectorAll(".nav-item").forEach((button) => button.classList.toggle("active", button.dataset.page === page));
             let html = "";
             if (page === "Browse") {
-              $("workspace").classList.add("clever-home-page");
               html = '<div class="clever-home"><div class="clever-wordmark">Clever</div><form class="search-wrap" id="home-search"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><circle cx="10.8" cy="10.8" r="6.8"/><path d="m16 16 5 5"/></svg><input id="home-query" placeholder="Search or enter a URL" autocomplete="url"/><button class="search-go" aria-label="Search">➜</button></form>' +
                 '<section class="section"><div class="section-head"><h2>Shortcuts</h2><button class="edit-btn" id="edit-shortcuts">' + (editing ? "Done" : "Edit") + '</button></div><div id="shortcut-list"></div></section></div>';
             } else if (page === "Favorites") {
@@ -546,9 +548,14 @@ html,body,#app{background:#090b10!important;color:#edf0f6!important}
           });
 
           function setBrowserVisible(visible) {
-            $("workspace").style.display = "none";
-            $("browser").classList.add("show");
-            if (visible) renderTabs();
+            if (visible) {
+              $("workspace").style.display = "none";
+              $("browser").classList.add("show");
+              renderTabs();
+            } else {
+              $("browser").classList.remove("show");
+              $("workspace").style.display = "flex";
+            }
           }
           function currentTab() { return tabs.find((tab) => tab.id === activeTabId) || null; }
           function setImmersive(enabled) { $("app").classList.toggle("immersive", !!enabled); $("browser").classList.toggle("immersive", !!enabled); $("exit-fullscreen").setAttribute("aria-hidden", enabled ? "false" : "true"); }
@@ -722,7 +729,7 @@ html,body,#app{background:#090b10!important;color:#edf0f6!important}
           const cloakTarget = cloakParams.get("cloak") === "1" ? cloakParams.get("url") : "";
           if (cloakTarget) {
             document.title = "a:b";
-            document.body.classList.add("cloak-mode");
+            $("app").classList.add("cloak-mode");
           }
           renderPage("Browse");
           setBrowserVisible(true);
