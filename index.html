@@ -95,6 +95,55 @@ h1{font-size:26px;letter-spacing:-.7px;margin:0;font-weight:650}.sub{margin:5px 
 .toast{position:fixed;bottom:24px;left:50%;transform:translate(-50%,10px);opacity:0;padding:10px 14px;border:1px solid var(--line);border-radius:9px;background:#343b42;color:#edf0f2;font-size:12px;pointer-events:none;transition:opacity .18s,transform .18s;z-index:10}
 .toast.show{opacity:1;transform:translate(-50%,0)}
 @keyframes rise{from{opacity:0;transform:translateY(7px)}to{opacity:1;transform:translateY(0)}}
+/* Consistent motion across the interface */
+:root{--ease-ui:cubic-bezier(.2,.75,.25,1);--ease-pop:cubic-bezier(.16,1,.3,1)}
+html{scroll-behavior:smooth}
+button,a,input,textarea{ -webkit-tap-highlight-color:transparent}
+button:focus-visible,a:focus-visible,input:focus-visible,textarea:focus-visible{outline:2px solid var(--cyan);outline-offset:3px}
+.header-button,.go,.shortcut,.tile,.back,.game,.ai-link,.blank,.text-action,.save-extension,.menu-popover button,.extension-item,.search,.extension-editor input,.extension-editor textarea{transition:color .22s var(--ease-ui),background-color .22s var(--ease-ui),border-color .22s var(--ease-ui),box-shadow .22s var(--ease-ui),transform .22s var(--ease-ui),opacity .22s var(--ease-ui)}
+.header-button:hover{transform:translateY(-1px)}
+.header-button:active,.go:active,.save-extension:active,.back:active{transform:scale(.94)}
+.header-button[aria-expanded=true]{background:var(--surface-hover);border-color:var(--line);color:var(--cyan)}
+.browser-header{animation:bar-enter .55s var(--ease-pop) both}
+.browser-controls .header-button,.browser-actions>.header-button,.menu-wrap>.header-button{animation:control-enter .45s var(--ease-pop) both}
+.browser-controls .header-button:nth-child(2){animation-delay:35ms}.browser-controls .header-button:nth-child(3){animation-delay:70ms}.browser-actions>.header-button{animation-delay:90ms}.menu-wrap>.header-button{animation-delay:125ms}
+.search{transition:background-color .25s var(--ease-ui),border-color .25s var(--ease-ui),box-shadow .25s var(--ease-ui),transform .25s var(--ease-ui)}
+.search:focus-within{box-shadow:0 0 0 3px #159db51c;transform:translateY(-1px)}
+.search svg{transition:transform .28s var(--ease-pop)}
+.search:focus-within svg{transform:scale(1.08)}
+.go:hover,.save-extension:hover{filter:brightness(1.08);transform:translateY(-1px)}
+.shortcut{transition:color .22s var(--ease-ui),background-color .22s var(--ease-ui),border-color .22s var(--ease-ui),transform .28s var(--ease-pop),box-shadow .22s var(--ease-ui)}
+.shortcut:hover{transform:translateY(-3px);box-shadow:0 8px 22px #10182035}
+.shortcut:active{transform:translateY(-1px) scale(.985)}
+.tile{transition:transform .3s var(--ease-pop),background-color .22s var(--ease-ui)}
+.shortcut:hover .tile{transform:scale(1.07)}
+.quick-panel{animation:content-enter .65s var(--ease-pop) both;animation-delay:100ms}
+.quick-heading h2{transition:color .2s var(--ease-ui)}
+.shortcut{animation:card-enter .55s var(--ease-pop) both}
+.shortcut:nth-child(1){animation-delay:120ms}.shortcut:nth-child(2){animation-delay:165ms}.shortcut:nth-child(3){animation-delay:210ms}.shortcut:nth-child(4){animation-delay:255ms}.shortcut:nth-child(5){animation-delay:300ms}
+.menu-popover{transform-origin:top right;animation:menu-enter .2s var(--ease-pop) both}
+.menu-popover button{transition:background-color .18s var(--ease-ui),color .18s var(--ease-ui),padding-left .18s var(--ease-ui)}
+.menu-popover button:hover{padding-left:15px}
+.panel-backdrop{animation:fade-in .2s ease both}
+.extension-dialog{animation:dialog-enter .32s var(--ease-pop) both}
+.extension-item{animation:card-enter .25s var(--ease-pop) both}
+.extension-item:hover{border-color:var(--cyan);transform:translateX(2px)}
+.extension-editor input:focus,.extension-editor textarea:focus{box-shadow:0 0 0 3px #159db51c}
+.game,.ai-link{transition:transform .25s var(--ease-pop),border-color .22s var(--ease-ui),background-color .22s var(--ease-ui),box-shadow .22s var(--ease-ui)}
+.game:hover,.ai-link:hover{transform:translateY(-3px);border-color:var(--cyan);box-shadow:0 10px 24px #10182035}
+.toast{transition:opacity .24s var(--ease-ui),transform .3s var(--ease-pop)}
+.view{animation:page-enter .38s var(--ease-pop) both}
+.footer{transition:border-color .2s var(--ease-ui)}
+@keyframes bar-enter{from{opacity:0;transform:translateY(-9px)}to{opacity:1;transform:translateY(0)}}
+@keyframes control-enter{from{opacity:0;transform:translateY(-5px) scale(.92)}to{opacity:1;transform:translateY(0) scale(1)}}
+@keyframes content-enter{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
+@keyframes card-enter{from{opacity:0;transform:translateY(10px) scale(.985)}to{opacity:1;transform:translateY(0) scale(1)}}
+@keyframes menu-enter{from{opacity:0;transform:translateY(-5px) scale(.97)}to{opacity:1;transform:translateY(0) scale(1)}}
+@keyframes fade-in{from{opacity:0}to{opacity:1}}
+@keyframes dialog-enter{from{opacity:0;transform:translateY(12px) scale(.985)}to{opacity:1;transform:translateY(0) scale(1)}}
+@keyframes page-enter{from{opacity:0;transform:translateY(9px)}to{opacity:1;transform:translateY(0)}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.browser-header,.browser-controls .header-button,.browser-actions>.header-button,.menu-wrap>.header-button,.quick-panel,.shortcut,.menu-popover,.panel-backdrop,.extension-dialog,.extension-item,.view{animation:none!important}.header-button,.go,.shortcut,.tile,.back,.game,.ai-link,.blank,.text-action,.save-extension,.menu-popover button,.extension-item,.search,.extension-editor input,.extension-editor textarea,.toast{transition:none!important}}
+
 @media(max-width:760px){.extension-dialog{padding:16px}.extension-layout{grid-template-columns:1fr}.extension-list{max-height:130px;overflow:auto}.extension-editor textarea{height:180px}.browser-header{height:54px;padding:0 14px}#home,.view{padding:24px 18px}.footer{padding:12px 16px}#home{min-height:0;gap:22px}.brand img{width:min(280px,78vw)}.welcome{margin-bottom:18px}.search{height:54px;padding:0 13px;border-radius:9px}.search input{font-size:14px}.go{height:36px;padding:0 13px}.quick-panel{padding:18px 0}.shortcuts{grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}.shortcut{min-height:58px;padding:9px}.tile{width:32px;height:32px;border-radius:7px}.footer{padding-top:24px}}
 @media(max-width:420px){.shortcuts{grid-template-columns:1fr 1fr}.shortcut{min-height:56px}.cards,.ai-grid{grid-template-columns:1fr}}
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important;scroll-behavior:auto!important}}
@@ -114,7 +163,7 @@ h1{font-size:26px;letter-spacing:-.7px;margin:0;font-weight:650}.sub{margin:5px 
   <div class="browser-actions">
     <button class="header-button extension-button" id="extensionsButton" type="button" title="Custom JS extensions" aria-label="Custom JS extensions"><svg viewBox="0 0 24 24"><path d="M9 4.5a2.5 2.5 0 1 0-5 0V8H2.5v5H4a2.5 2.5 0 1 1 5 0h5v-3.5a2.5 2.5 0 1 0 0-5V2h-5v2.5Z"/><path d="M14 8h3.5a2.5 2.5 0 1 1 5 0V13h-2.5a2.5 2.5 0 1 0 0 5H22v3.5h-8V18"/></svg></button>
     <div class="menu-wrap">
-      <button class="header-button" id="menuButton" type="button" title="Menu" aria-label="Menu" aria-expanded="false"><svg viewBox="0 0 24 24"><circle cx="5" cy="12" r="1"/><circle cx="12" cy="12" r="1"/><circle cx="19" cy="12" r="1"/></svg></button>
+      <button class="header-button" id="menuButton" type="button" title="Menu" aria-label="Menu" aria-expanded="false"><svg viewBox="0 0 24 24"><path d="M4 6.5h16M4 12h16M4 17.5h16"/></svg></button>
       <div class="menu-popover" id="menuPopover" hidden><button type="button" id="menuExtensions">Extensions</button><button type="button" id="menuAbout">About Edupoint</button></div>
     </div>
   </div>
