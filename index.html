@@ -70,16 +70,6 @@ h1{font-size:26px;letter-spacing:-.7px;margin:0;font-weight:650}.sub{margin:5px 
 @media(max-width:420px){.shortcuts{grid-template-columns:1fr 1fr}.shortcut{min-height:56px}.cards,.ai-grid{grid-template-columns:1fr}}
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important;scroll-behavior:auto!important}}
 
-.connection-monitor{width:100%;margin:18px 0 0;padding:14px 16px;border:1px solid var(--line);border-radius:9px;background:var(--surface);display:grid;grid-template-columns:1fr 1fr;gap:0}
-.connection-metric{min-width:0;display:flex;align-items:center;justify-content:space-between;gap:12px;padding:2px 14px}
-.connection-metric:first-child{border-right:1px solid var(--line);padding-left:0}
-.connection-metric:last-child{padding-right:0}
-.metric-name{display:flex;flex-direction:column;gap:4px}
-.metric-name strong{font-size:12px;font-weight:600}
-.metric-name small{font-size:10px;color:var(--muted)}
-.metric-value{font-size:17px;font-weight:650;letter-spacing:-.5px;color:var(--cyan);white-space:nowrap;font-variant-numeric:tabular-nums}
-.metric-value small{font-size:10px;font-weight:500;color:var(--muted);letter-spacing:0}
-@media(max-width:420px){.connection-monitor{padding:12px 10px}.connection-metric{padding:2px 9px;gap:6px}.metric-value{font-size:15px}}
 </style>
 </head>
 <body>
@@ -96,16 +86,6 @@ h1{font-size:26px;letter-spacing:-.7px;margin:0;font-weight:650}.sub{margin:5px 
 <button class="go" type="submit">GO</button>
 </div>
 </form>
-<div class="connection-monitor" aria-label="Proxy connection latency">
-  <div class="connection-metric">
-    <div class="metric-name"><strong>Wisp</strong><small id="wispStatus">Not connected</small></div>
-    <div class="metric-value" id="wispLatency">— <small>ms</small></div>
-  </div>
-  <div class="connection-metric">
-    <div class="metric-name"><strong>Scramjet</strong><small id="scramjetStatus">Not initialized</small></div>
-    <div class="metric-value" id="scramjetLatency">— <small>ms</small></div>
-  </div>
-</div>
 </div>
 <div class="quick-panel">
 <div class="quick-heading"><h2>Quick access</h2><span>YOUR SHORTCUTS</span></div>
@@ -138,7 +118,7 @@ h1{font-size:26px;letter-spacing:-.7px;margin:0;font-weight:650}.sub{margin:5px 
 </div>
 </section>
 </main>
-<footer class="footer"><div class="footer-brand"><span class="dot"></span><span>Edupoint</span></div><button class="blank" id="blankButton" type="button">about:blank</button></footer>
+<footer class="footer"><div class="footer-brand"><span>Proxy load</span><strong id="proxyLoadTime" style="color:var(--cyan);font-variant-numeric:tabular-nums;font-weight:600">— ms</strong></div><button class="blank" id="blankButton" type="button">about:blank</button></footer>
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
 </div>
 <script>
