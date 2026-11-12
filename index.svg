@@ -29,7 +29,7 @@
           .tile svg{width:25px;height:25px;stroke:currentColor;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
           .tile.play{color:#83d8e5}.tile.youtube{color:#ff7777}.tile.ai{color:#c2b8ff}.tile.discord{color:#a9a4ff}.tile.music{color:#86d9a5}
           .footer{margin-top:auto;width:min(1120px,100%);display:flex;align-items:center;justify-content:space-between;padding-top:34px;color:#7f8b95;font-size:11px;letter-spacing:.15px}
-          .footer-brand{display:flex;align-items:center;gap:8px}.dot{width:6px;height:6px;border-radius:50%;background:var(--cyan);box-shadow:0 0 10px rgba(21,157,181,.65)}
+          .connection{display:flex;align-items:center;gap:7px;color:#929da6;font-size:11px}.connection-dot{width:6px;height:6px;border-radius:50%;background:#7b8790;flex:none}.connection strong{color:var(--cyan);font-weight:600;font-variant-numeric:tabular-nums}
           .blank{border:0;background:transparent;color:#9ba6af;font-size:11px;padding:8px 0;cursor:pointer;transition:color .2s}.blank:hover{color:var(--cyan2)}
           .view{width:min(920px,100%);margin:0 auto;animation:rise .35s ease both}
           .view-head{display:flex;align-items:center;gap:14px;margin:0 0 28px}
@@ -95,7 +95,7 @@
               </div>
             </section>
           </main>
-          <footer class="footer"><div class="footer-brand"><span class="dot"></span><span>Edupoint</span></div><button class="blank" id="blankButton" type="button">about:blank</button></footer>
+          <footer class="footer"><div class="connection" aria-live="polite"><span class="connection-dot"></span><span>Connection</span><strong id="connectionTime">— ms</strong></div><button class="blank" id="blankButton" type="button">about:blank</button></footer>
         </div>
         <div class="toast" id="toast" role="status" aria-live="polite"></div>
         <xhtml:script><![CDATA[
@@ -111,6 +111,14 @@
               clearTimeout(toastTimer);
               toastTimer = setTimeout(() => toast.classList.remove('show'), 2400);
             }
+            async function measureConnection() {
+              const value = document.getElementById('connectionTime');
+              const dot = document.querySelector('.connection-dot');
+              try { const start = performance.now(); await fetch('./s_sw.js?ping=' + Date.now(), { method: 'HEAD', cache: 'no-store' }); const ms = Math.round(performance.now() - start); value.textContent = ms + ' ms'; dot.style.background = ms < 120 ? '#35b879' : ms < 300 ? '#d5a64a' : '#d46b6b'; }
+              catch { value.textContent = 'Offline'; dot.style.background = '#d46b6b'; }
+            }
+            measureConnection();
+            setInterval(measureConnection, 15000);
             function showPage(name) {
               home.hidden = name !== 'home';
               play.hidden = name !== 'play';
