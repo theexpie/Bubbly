@@ -148,7 +148,7 @@ button:focus-visible,a:focus-visible,input:focus-visible,textarea:focus-visible{
 @media(max-width:420px){.shortcuts{grid-template-columns:1fr 1fr}.shortcut{min-height:56px}.cards,.ai-grid{grid-template-columns:1fr}}
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important;scroll-behavior:auto!important}}.reduce-motion *, .reduce-motion *::before, .reduce-motion *::after{animation-duration:.01ms!important;transition-duration:.01ms!important;scroll-behavior:auto!important}
 
-</style>
+.settings-layout{display:grid;grid-template-columns:170px minmax(0,1fr);gap:26px}.settings-nav{position:sticky;top:76px;display:flex;flex-direction:column;gap:4px}.settings-nav a{padding:9px 11px;border-radius:7px;color:var(--muted);text-decoration:none;font-size:12px}.settings-nav a:hover{background:var(--surface);color:var(--cyan)}.settings-content{display:flex;flex-direction:column;gap:28px;min-width:0}.settings-group{scroll-margin-top:75px}.settings-group h2{font-size:16px;margin:0 0 11px}.setting-card{padding:0 17px;border:1px solid var(--line);border-radius:9px;background:var(--surface)}.setting-row{min-height:65px;display:flex;align-items:center;justify-content:space-between;gap:18px;padding:11px 0;border-bottom:1px solid var(--line);font-size:12px}.setting-row:last-child{border:0}.setting-row>span:first-child{display:flex;flex-direction:column;gap:5px;min-width:0}.setting-row strong{font-size:12px}.setting-row small{max-width:650px;color:var(--muted);font-size:10px;line-height:1.45}.setting-row input[type=checkbox]{width:18px;height:18px;accent-color:var(--cyan);flex:none}.setting-row select,.setting-row input[type=text]{max-width:190px;min-width:125px;padding:8px;border:1px solid var(--line);border-radius:7px;background:var(--bg);color:var(--text);font:11px Inter,system-ui}.setting-control{display:flex;gap:7px}.small-action{padding:8px 11px;border:1px solid var(--line);border-radius:7px;background:var(--bg);color:var(--text);font-size:11px}.small-action:hover{border-color:var(--cyan);color:var(--cyan)}.danger-action{color:#d58b8b}.settings-section-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:11px}.settings-section-head h2{margin:0}.history-card{padding:0}.history-list{display:flex;flex-direction:column;color:var(--muted);font-size:12px}.history-entry{padding:11px 17px;text-align:left;border:0;border-bottom:1px solid var(--line);background:transparent;color:var(--text);font-size:11px}.history-entry:hover{color:var(--cyan);background:var(--surface-hover)}.credits-card{display:grid;gap:14px;padding:16px}.credits-card p{margin:0;color:var(--muted);font-size:11px}.credits-card div{display:flex;flex-direction:column;gap:5px;font-size:11px}.credits-card span{color:var(--muted);font-size:10px}.settings-hidden{display:none!important}:root[data-theme=light]{color-scheme:light;--bg:#f3f5f6;--surface:#fff;--surface-hover:#e8eef0;--line:#d5dde1;--muted:#64727b;--text:#202a30}:root[data-background=soft]{--bg:#202a30;--surface:#303b43}:root[data-theme=light][data-background=soft]{--bg:#e8eff1;--surface:#f8fbfc}.browser-header.compact-header{height:44px}.browser-header.compact-header .header-button{width:30px;height:30px}body{font-size:calc(14px * var(--nav-scale,1))}@media(max-width:760px){.settings-layout{grid-template-columns:1fr;gap:14px}.settings-nav{position:static;flex-direction:row;overflow:auto;padding-bottom:7px}.settings-nav a{white-space:nowrap}.setting-row{gap:10px}.setting-row select,.setting-row input[type=text]{min-width:100px;max-width:140px}}</style>
 </head>
 <body>
 <div class="shell">
@@ -179,7 +179,7 @@ button:focus-visible,a:focus-visible,input:focus-visible,textarea:focus-visible{
 </div>
 </form>
 </div>
-<div class="quick-panel">
+<div class="quick-panel" id="quickPanel">
 <div class="quick-heading"><h2>Quick access</h2><span>YOUR SHORTCUTS</span></div>
 <nav class="shortcuts" aria-label="Shortcuts">
 <button class="shortcut" data-page="play"><span class="tile play"><svg viewBox="0 0 24 24"><path d="m9 6 10 6-10 6z"></path><path d="M4 5v14"></path></svg></span><span class="shortcut-copy"><strong>Play</strong><small>Games and breaks</small></span><span class="shortcut-arrow">↗</span></button>
@@ -201,6 +201,35 @@ button:focus-visible,a:focus-visible,input:focus-visible,textarea:focus-visible{
 <article class="game"><div><div class="game-icon">◎</div><h3>Memory Lane</h3></div><span class="tag">Coming soon</span></article>
 </div>
 </section>
+<section id="settingsPage" class="view settings-page" hidden>
+<div class="view-head"><button class="back" data-back aria-label="Back">←</button><div><h1>Settings</h1></div></div>
+<div class="settings-layout"><nav class="settings-nav"><a href="#customize">Customize</a><a href="#privacy">Privacy</a><a href="#history">History</a><a href="#extensions">Extensions</a><a href="#credits">Credits</a><a href="#advanced">Advanced</a></nav><div class="settings-content">
+<section id="customize" class="settings-group"><h2>Customize</h2><div class="setting-card">
+<label class="setting-row"><span><strong>Default Search Engine</strong><small>Used when you type a search query into the address bar.</small></span><select id="defaultSearch"><option value="duckduckgo">DuckDuckGo</option><option value="google">Google</option><option value="bing">Bing</option><option value="brave">Brave Search</option></select></label>
+<label class="setting-row"><span><strong>Site Theme</strong><small>Customize the appearance of the browser by selecting a theme.</small></span><select id="siteTheme"><option value="dark">Dark</option><option value="light">Light</option><option value="system">System</option></select></label>
+<label class="setting-row"><span><strong>Font</strong><small>Applies across the whole site.</small></span><select id="siteFont"><option value="inter">Inter</option><option value="system">System</option><option value="arial">Arial</option><option value="mono">Monospace</option></select></label>
+<label class="setting-row"><span><strong>Background Design</strong><small>Customize the browser's background design.</small></span><select id="backgroundDesign"><option value="plain">Plain</option><option value="soft">Soft contrast</option></select></label>
+<label class="setting-row"><span><strong>Navigation Scale</strong><small>Scale navigation bar size (logo &amp; font) globally.</small></span><select id="navigationScale"><option value="90">90%</option><option value="100">100%</option><option value="110">110%</option><option value="120">120%</option></select></label>
+<label class="setting-row"><span><strong>Tabs Bar</strong><small>Show the tabs bar, allowing you to open multiple sites when browsing.</small></span><input id="tabsBar" type="checkbox"></label>
+<label class="setting-row"><span><strong>New Tab Shortcuts</strong><small>Show quick-access site shortcuts on the new tab page.</small></span><input id="newTabShortcuts" type="checkbox" checked></label>
+<label class="setting-row"><span><strong>Compact App Header</strong><small>Shrink the tabs &amp; navigation bar to a slimmer single line.</small></span><input id="compactHeader" type="checkbox"></label>
+<label class="setting-row"><span><strong>Reduce motion</strong><small>Limit interface animations.</small></span><input id="reduceMotion" type="checkbox"></label>
+<label class="setting-row"><span><strong>Show connection time</strong><small>Show hosting response time in the footer.</small></span><input id="showConnection" type="checkbox" checked></label></div></section>
+<section id="privacy" class="settings-group"><h2>Privacy</h2><div class="setting-card">
+<label class="setting-row"><span><strong>Incognito</strong><small>Don't save the pages you visit to history.</small></span><input id="incognito" type="checkbox"></label>
+<label class="setting-row"><span><strong>Browse Engine</strong><small>How sites are loaded. Scramjet is faster and more compatible; switch to Standard if a site won't load.</small></span><select id="browseEngine"><option value="scramjet">Scramjet</option><option value="standard">Standard</option></select></label>
+<label class="setting-row"><span><strong>Site Title</strong><small>Change the browser tab's title and icon to disguise the site.</small></span><span class="setting-control"><input id="siteTitle" type="text" maxlength="40" placeholder="Bubbly"><button class="small-action" id="applySiteTitle" type="button">Apply</button></span></label>
+<label class="setting-row"><span><strong>Open about:blank on startup</strong><small>When enabled, the site is automatically cloaked inside an about:blank window when you visit.</small></span><input id="blankStartup" type="checkbox"></label>
+<label class="setting-row"><span><strong>Panic Key</strong><small>Enable a keyboard shortcut that instantly redirects to a safe page.</small></span><input id="panicEnabled" type="checkbox"></label>
+<label class="setting-row"><span><strong>Panic Shortcut</strong><small>The key that triggers the panic redirect when pressed.</small></span><input id="panicShortcut" type="text" maxlength="20" placeholder="Backquote"></label></div></section>
+<section id="history" class="settings-group"><div class="settings-section-head"><h2>History</h2><button class="small-action danger-action" id="clearHistory" type="button">Clear all</button></div><div class="setting-card"><div id="historyList" class="history-list">No history yet.</div></div></section>
+<section id="extensions" class="settings-group"><h2>Extensions</h2><div class="setting-card">
+<div class="setting-row"><span><strong>Built-in extensions</strong><small>Lightweight CSS / JS that gets injected into proxied pages on load. Toggle individually.</small></span><span class="setting-value">None</span></div>
+<div class="setting-row"><span><strong>Curated</strong><small>Hide common cookie / GDPR consent banners.</small></span><label class="setting-toggle">Hide Cookie Banners<input id="hideCookies" type="checkbox"></label></div>
+<div class="setting-row"><span><strong>Add custom extension</strong><small>Inject CSS and/or JS into every proxied page on load. Same-origin only — no remote fetches.</small></span><button class="small-action" id="openCustomExtensions" type="button">Add extension</button></div></div></section>
+<section id="credits" class="settings-group"><h2>Credits</h2><div class="setting-card credits-card"><p>Bubbly is built on these open-source projects. Big thanks to their creators.</p><div><strong>Games</strong><span>GN-Math · From open source GitHub.</span><span>Seraph · From open source GitHub.</span></div><div><strong>Browse engine</strong><span>Ultraviolet · Credits to TitaniumNetwork.</span></div><div><strong>Emoji</strong><span>Twemoji · Emoji graphics by Twitter, licensed CC-BY 4.0.</span></div></div></section>
+<section id="advanced" class="settings-group"><h2>Advanced</h2><div class="setting-card"><div class="setting-row"><span><strong>About Bubbly</strong><small>Smart Learning Tools for Students · Bubbly v2</small></span></div><div class="setting-row"><span><strong>Reset All Settings</strong><small>Reset every setting to defaults and clear stored preferences.</small></span><button class="small-action danger-action" id="resetSettings" type="button">Reset</button></div><div class="setting-row"><span><strong>Clear All Tabs</strong><small>Close all open tabs and return to the new tab page.</small></span><button class="small-action" id="clearTabs" type="button">Clear</button></div></div></section>
+</div></div></section>
 <section id="aiPage" class="view" hidden>
 <div class="view-head"><button class="back" data-back aria-label="Back">←</button><div><h1>AI</h1></div></div>
 <div class="ai-grid">
@@ -225,17 +254,17 @@ button:focus-visible,a:focus-visible,input:focus-visible,textarea:focus-visible{
     </div>
   </section>
 </div>
-<div class="panel-backdrop" id="settingsPanel" hidden><section class="extension-dialog settings-dialog" role="dialog" aria-modal="true" aria-labelledby="settingsTitle"><div class="extension-top"><h2 id="settingsTitle">Settings</h2><button class="header-button" id="closeSettings" type="button" aria-label="Close"><svg viewBox="0 0 24 24"><path d="m6 6 12 12M18 6 6 18"/></svg></button></div><div class="settings-list"><label class="setting-row" for="reduceMotion">Reduce motion<input id="reduceMotion" type="checkbox"></label><label class="setting-row" for="showConnection">Show connection time<input id="showConnection" type="checkbox" checked></label></div></section></div>
+
 </div>
 <script>
 (() => {
-const home=document.getElementById('home'),play=document.getElementById('playPage'),ai=document.getElementById('aiPage');
+const home=document.getElementById('home'),play=document.getElementById('playPage'),ai=document.getElementById('aiPage'),settings=document.getElementById('settingsPage');
 const toast=document.getElementById('toast');let toastTimer;
 function notify(message){toast.textContent=message;toast.classList.add('show');clearTimeout(toastTimer);toastTimer=setTimeout(()=>toast.classList.remove('show'),2400)}
-function showPage(name){home.hidden=name!=='home';play.hidden=name!=='play';ai.hidden=name!=='ai';document.title=name==='home'?'Bubbly':name==='play'?'Play — Bubbly':'AI — Bubbly'}
+function showPage(name){home.hidden=name!=='home';play.hidden=name!=='play';ai.hidden=name!=='ai';settings.hidden=name!=='settings';document.title=name==='home'?'Bubbly':name==='play'?'Play — Bubbly':name==='ai'?'AI — Bubbly':'Settings — Bubbly';if(name==='settings')renderHistory()}
 async function measureConnection(){const value=document.getElementById('connectionTime');try{const start=performance.now();await fetch('./s_sw.js?ping='+Date.now(),{method:'HEAD',cache:'no-store'});const ms=Math.round(performance.now()-start);value.textContent=ms+' ms'}catch{value.textContent='Offline'}}
 measureConnection();setInterval(measureConnection,15000);
-const menuButton=document.getElementById('menuButton'),menuPopover=document.getElementById('menuPopover'),extensionPanel=document.getElementById('extensionPanel'),settingsPanel=document.getElementById('settingsPanel');
+const menuButton=document.getElementById('menuButton'),menuPopover=document.getElementById('menuPopover'),extensionPanel=document.getElementById('extensionPanel');
 const extensionList=document.getElementById('extensionList'),extensionForm=document.getElementById('extensionForm'),extensionName=document.getElementById('extensionName'),extensionCode=document.getElementById('extensionCode'),deleteExtension=document.getElementById('deleteExtension');
 let extensions=[],editingId=null;
 try{extensions=JSON.parse(localStorage.getItem('edupoint.extensions')||'[]');if(!Array.isArray(extensions))extensions=[]}catch{extensions=[]}
@@ -251,15 +280,20 @@ document.getElementById('navRefresh').addEventListener('click',()=>location.relo
 menuButton.addEventListener('click',()=>{const opening=menuPopover.hidden;menuPopover.hidden=!opening;menuButton.setAttribute('aria-expanded',String(opening))});
 document.addEventListener('click',e=>{if(!e.target.closest('.menu-wrap'))closeMenu()});
 document.getElementById('menuExtensions').addEventListener('click',openExtensions);
-document.getElementById('menuSettings').addEventListener('click',()=>{closeMenu();settingsPanel.hidden=false});
-document.getElementById('closeSettings').addEventListener('click',()=>settingsPanel.hidden=true);
-settingsPanel.addEventListener('click',e=>{if(e.target===settingsPanel)settingsPanel.hidden=true});
-const reduceMotion=document.getElementById('reduceMotion'),showConnection=document.getElementById('showConnection'),connection=document.querySelector('.connection');
-try{reduceMotion.checked=localStorage.getItem('edupoint.reduceMotion')==='true';showConnection.checked=localStorage.getItem('edupoint.showConnection')!=='false'}catch{}
-function applySettings(){document.documentElement.classList.toggle('reduce-motion',reduceMotion.checked);connection.hidden=!showConnection.checked}
-reduceMotion.addEventListener('change',()=>{try{localStorage.setItem('edupoint.reduceMotion',String(reduceMotion.checked))}catch{}applySettings()});
-showConnection.addEventListener('change',()=>{try{localStorage.setItem('edupoint.showConnection',String(showConnection.checked))}catch{}applySettings()});
-applySettings();
+document.getElementById('menuSettings').addEventListener('click',()=>{closeMenu();showPage('settings')});
+const connection=document.querySelector('.connection');
+const settingIds=['defaultSearch','siteTheme','siteFont','backgroundDesign','navigationScale','tabsBar','newTabShortcuts','compactHeader','reduceMotion','showConnection','incognito','browseEngine','blankStartup','panicEnabled','panicShortcut','hideCookies'];
+function applySettings(){const root=document.documentElement;root.classList.toggle('reduce-motion',document.getElementById('reduceMotion').checked);connection.hidden=!document.getElementById('showConnection').checked;document.getElementById('quickPanel').classList.toggle('settings-hidden',!document.getElementById('newTabShortcuts').checked);root.dataset.theme=document.getElementById('siteTheme').value;root.dataset.background=document.getElementById('backgroundDesign').value;root.style.setProperty('--nav-scale',Number(document.getElementById('navigationScale').value)/100);document.querySelector('.browser-header').classList.toggle('compact-header',document.getElementById('compactHeader').checked)}
+function loadPrefs(){settingIds.forEach(id=>{const el=document.getElementById(id);try{const v=localStorage.getItem('bubbly.'+id);if(v!==null){if(el.type==='checkbox')el.checked=v==='true';else el.value=v}}catch{}});document.getElementById('siteTitle').value=localStorage.getItem('bubbly.siteTitle')||'';applySettings()}
+function savePref(id){const el=document.getElementById(id);try{localStorage.setItem('bubbly.'+id,el.type==='checkbox'?String(el.checked):el.value)}catch{}applySettings()}
+settingIds.forEach(id=>document.getElementById(id).addEventListener('change',()=>savePref(id)));loadPrefs();
+function renderHistory(){const list=document.getElementById('historyList');let items=[];try{items=JSON.parse(localStorage.getItem('bubbly.history')||'[]')}catch{}list.replaceChildren();if(!items.length){list.textContent='No history yet.';return}items.slice().reverse().forEach(item=>{const b=document.createElement('button');b.className='history-entry';b.type='button';b.textContent=item.title||item.url;b.addEventListener('click',()=>window.open(item.url,'_blank','noopener'));list.append(b)})}
+document.getElementById('applySiteTitle').addEventListener('click',()=>{const v=document.getElementById('siteTitle').value.trim();try{localStorage.setItem('bubbly.siteTitle',v)}catch{}document.title=v||'Bubbly';notify('Site title updated')});
+document.getElementById('openCustomExtensions').addEventListener('click',openExtensions);
+document.getElementById('clearHistory').addEventListener('click',()=>{try{localStorage.removeItem('bubbly.history')}catch{}renderHistory();notify('History cleared')});
+document.getElementById('resetSettings').addEventListener('click',()=>{if(!confirm('Reset every Bubbly setting to defaults?'))return;settingIds.forEach(id=>localStorage.removeItem('bubbly.'+id));localStorage.removeItem('bubbly.siteTitle');loadPrefs();document.title='Bubbly';notify('Settings reset')});
+document.getElementById('clearTabs').addEventListener('click',()=>notify('No managed tabs are open.'));
+document.addEventListener('keydown',e=>{if(document.getElementById('panicEnabled').checked){const k=document.getElementById('panicShortcut').value.trim();if(k&&e.key.toLowerCase()===k.toLowerCase())location.replace('https://www.google.com/')}});
 document.getElementById('extensionsButton').addEventListener('click',openExtensions);
 document.getElementById('closeExtensions').addEventListener('click',()=>extensionPanel.hidden=true);
 extensionPanel.addEventListener('click',e=>{if(e.target===extensionPanel)extensionPanel.hidden=true});
@@ -270,8 +304,7 @@ document.querySelectorAll('[data-page]').forEach(el=>el.addEventListener('click'
 document.querySelectorAll('[data-back]').forEach(el=>el.addEventListener('click',()=>showPage('home')));
 document.getElementById('searchForm').addEventListener('submit',e=>{
 e.preventDefault();const value=document.getElementById('searchInput').value.trim();if(!value)return;
-const target=/^https?:\/\//i.test(value)?value:/^[\w-]+(\.[\w-]+)+(\/.*)?$/i.test(value)?'https://'+value:'https://duckduckgo.com/?q='+encodeURIComponent(value);
-window.open(target,'_blank','noopener');
+const target=/^https?:\/\//i.test(value)?value:/^[\w-]+(\.[\w-]+)+(\/.*)?$/i.test(value)?'https://'+value:(()=>{const e=document.getElementById('defaultSearch').value;const u={duckduckgo:'https://duckduckgo.com/?q=',google:'https://www.google.com/search?q=',bing:'https://www.bing.com/search?q=',brave:'https://search.brave.com/search?q='};return u[e]+encodeURIComponent(value)})();if(!document.getElementById('incognito').checked){try{const h=JSON.parse(localStorage.getItem('bubbly.history')||'[]');h.push({url:target,title:value,at:Date.now()});localStorage.setItem('bubbly.history',JSON.stringify(h.slice(-500)))}catch{}}window.open(target,'_blank','noopener');
 });
 document.getElementById('blankButton').addEventListener('click',()=>{
 const tab=window.open('about:blank','_blank');if(!tab){notify('Allow pop-ups to open a blank tab.');return;}
