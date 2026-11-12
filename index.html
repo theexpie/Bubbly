@@ -12,26 +12,38 @@
 html,body{margin:0;min-height:100%;font-family:Inter,system-ui,sans-serif;background:var(--bg);color:var(--text)}
 body{min-height:100vh;overflow-x:hidden}
 button,input{font:inherit}button{color:inherit;cursor:pointer}
-.shell{min-height:100vh;display:flex;flex-direction:column;align-items:center;padding:clamp(42px,9vh,88px) 24px 20px}
+.shell{min-height:100vh;display:flex;flex-direction:column;align-items:center;padding:clamp(24px,5vh,52px) 28px 20px}
 .glow{display:none}
-main{width:min(900px,100%);margin:auto;animation:rise .3s ease both}
-.brand{display:flex;justify-content:center;align-items:center;margin:0 0 32px}
-.brand img{display:block;width:min(360px,74vw);height:auto;object-fit:contain}
-.search-wrap{width:min(680px,100%);margin:auto}
-.search{height:60px;width:100%;display:flex;align-items:center;gap:14px;padding:0 18px;border:1px solid var(--line);border-radius:13px;background:var(--surface);transition:border-color .18s,background .18s}
+main{width:min(1180px,100%);margin:auto;animation:rise .3s ease both}
+#home{min-height:66vh;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);align-items:center;gap:clamp(36px,6vw,84px)}
+.home-main{width:100%;max-width:520px;margin:auto}
+.brand{display:flex;justify-content:flex-start;align-items:center;margin:0 0 14px}
+.brand img{display:block;width:min(420px,100%);height:auto;object-fit:contain}
+.welcome{margin:0 0 28px;color:var(--muted);font-size:15px}
+.search-wrap{width:100%;margin:auto}
+.search{height:66px;width:100%;display:flex;align-items:center;gap:14px;padding:0 20px;border:1px solid var(--line);border-radius:14px;background:var(--surface);transition:border-color .18s,background .18s}
 .search:focus-within{border-color:var(--cyan);background:#343c43}
-.search svg{width:20px;height:20px;flex:none;color:var(--cyan)}
-.search input{min-width:0;flex:1;border:0;outline:0;background:transparent;color:var(--text);font-size:15px}
+.search svg{width:22px;height:22px;flex:none;color:var(--cyan)}
+.search input{min-width:0;flex:1;border:0;outline:0;background:transparent;color:var(--text);font-size:16px}
 .search input::placeholder{color:#a0aab2}
-.go{height:36px;padding:0 15px;border:0;border-radius:9px;background:var(--cyan);color:#fff;font-size:12px;font-weight:650;transition:background .18s}
+.go{height:40px;padding:0 18px;border:0;border-radius:9px;background:var(--cyan);color:#fff;font-size:12px;font-weight:650;transition:background .18s}
 .go:hover{background:var(--cyan)}
-.shortcuts{display:flex;justify-content:center;align-items:flex-start;gap:clamp(18px,3vw,34px);flex-wrap:wrap;margin-top:36px}
-.shortcut{width:76px;display:flex;flex-direction:column;align-items:center;gap:10px;text-decoration:none;color:#d1d6da;font-size:12px;font-weight:550;cursor:pointer;background:none;border:0;padding:0;transition:color .18s}
-.shortcut:hover{color:#fff}
-.tile{width:54px;height:54px;display:grid;place-items:center;border:1px solid var(--cyan);border-radius:14px;background:var(--cyan);color:#fff;transition:background .18s,border-color .18s}
-.shortcut:hover .tile{background:var(--surface-hover);border-color:#159db5}
-.tile svg{width:24px;height:24px;stroke:currentColor;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.quick-panel{width:100%;padding:26px;border:1px solid var(--line);border-radius:18px;background:var(--surface)}
+.quick-heading{display:flex;align-items:center;justify-content:space-between;margin:0 0 18px}
+.quick-heading h2{margin:0;font-size:17px;font-weight:650;letter-spacing:-.3px}
+.quick-heading span{color:var(--muted);font-size:10px;font-weight:650;letter-spacing:1px}
+.shortcuts{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.shortcut{min-width:0;min-height:88px;display:flex;align-items:center;gap:13px;text-align:left;text-decoration:none;color:#d1d6da;font-size:12px;font-weight:550;cursor:pointer;background:var(--bg);border:1px solid var(--line);border-radius:13px;padding:13px;transition:border-color .18s,background .18s,transform .18s}
+.shortcut:hover{color:#fff;border-color:var(--cyan);background:#30363d;transform:translateY(-2px)}
+.tile{width:48px;height:48px;flex:none;display:grid;place-items:center;border:1px solid var(--cyan);border-radius:12px;background:var(--cyan);color:#fff;transition:background .18s,border-color .18s}
+.shortcut:hover .tile{background:var(--cyan);border-color:var(--cyan)}
+.tile svg{width:23px;height:23px;stroke:currentColor;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
 .play,.youtube,.ai,.discord,.music{color:#fff}
+.shortcut-copy{min-width:0;display:flex;flex:1;flex-direction:column;gap:5px}
+.shortcut-copy strong{font-size:13px;font-weight:650}
+.shortcut-copy small{color:var(--muted);font-size:10px;font-weight:450}
+.shortcut-arrow{color:var(--muted);font-size:15px;align-self:flex-start}
+
 .footer{margin-top:auto;width:min(1120px,100%);display:flex;align-items:center;justify-content:space-between;padding-top:32px;color:#929da6;font-size:11px}
 .footer-brand{display:flex;align-items:center;gap:8px}.dot{width:6px;height:6px;border-radius:50%;background:var(--cyan)}
 .blank{border:0;background:transparent;color:#a5afb7;font-size:11px;padding:8px 0;cursor:pointer;transition:color .18s}.blank:hover{color:var(--cyan-soft)}
@@ -54,8 +66,8 @@ h1{font-size:26px;letter-spacing:-.7px;margin:0;font-weight:650}.sub{margin:5px 
 .toast{position:fixed;bottom:24px;left:50%;transform:translate(-50%,10px);opacity:0;padding:10px 14px;border:1px solid var(--line);border-radius:9px;background:#343b42;color:#edf0f2;font-size:12px;pointer-events:none;transition:opacity .18s,transform .18s;z-index:10}
 .toast.show{opacity:1;transform:translate(-50%,0)}
 @keyframes rise{from{opacity:0;transform:translateY(7px)}to{opacity:1;transform:translateY(0)}}
-@media(max-width:620px){.shell{padding:48px 18px 18px}.brand{margin-bottom:26px}.brand img{width:min(320px,82vw)}.search{height:56px;padding:0 13px;border-radius:12px}.search input{font-size:14px}.go{height:34px;padding:0 11px}.shortcuts{gap:22px 15px;margin-top:30px}.shortcut{width:68px}.tile{width:52px;height:52px;border-radius:13px}.cards,.ai-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.footer{padding-top:24px}}
-@media(max-width:380px){.cards,.ai-grid{grid-template-columns:1fr}.shortcuts{gap:18px 10px}}
+@media(max-width:760px){.shell{padding:34px 18px 18px}#home{min-height:0;grid-template-columns:1fr;gap:34px}.home-main{max-width:560px}.brand{justify-content:center}.brand img{width:min(360px,82vw)}.welcome{text-align:center;margin-bottom:22px}.search{height:58px;padding:0 13px;border-radius:12px}.search input{font-size:14px}.go{height:36px;padding:0 13px}.quick-panel{padding:20px}.shortcuts{gap:10px}.shortcut{min-height:78px;padding:10px}.tile{width:44px;height:44px;border-radius:11px}.footer{padding-top:24px}}
+@media(max-width:420px){.shortcuts{grid-template-columns:1fr}.quick-heading span{font-size:9px}.cards,.ai-grid{grid-template-columns:1fr}}
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important;scroll-behavior:auto!important}}
 </style>
 </head>
@@ -64,7 +76,9 @@ h1{font-size:26px;letter-spacing:-.7px;margin:0;font-weight:650}.sub{margin:5px 
 <div class="glow"></div>
 <main>
 <section id="home" class="view">
+<div class="home-main">
 <div class="brand"><img src="./Edupoint%20logogo.png" alt="Edupoint"></div>
+<p class="welcome">Your space to get things done.</p>
 <form class="search-wrap" id="searchForm">
 <div class="search">
 <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.8" cy="10.8" r="6.8"></circle><path d="m16 16 4.5 4.5"></path></svg>
@@ -72,13 +86,17 @@ h1{font-size:26px;letter-spacing:-.7px;margin:0;font-weight:650}.sub{margin:5px 
 <button class="go" type="submit">GO</button>
 </div>
 </form>
+</div>
+<div class="quick-panel">
+<div class="quick-heading"><h2>Quick access</h2><span>YOUR SHORTCUTS</span></div>
 <nav class="shortcuts" aria-label="Shortcuts">
-<button class="shortcut" data-page="play"><span class="tile play"><svg viewBox="0 0 24 24"><path d="m9 6 10 6-10 6z"></path><path d="M4 5v14"></path></svg></span><span>Play</span></button>
-<a class="shortcut" href="https://www.youtube.com/" target="_blank" rel="noopener"><span class="tile youtube"><svg viewBox="0 0 24 24" fill="currentColor" stroke="none"><path d="M23 7.2a3 3 0 0 0-2.1-2.1C19 4.6 12 4.6 12 4.6s-7 0-8.9.5A3 3 0 0 0 1 7.2 31 31 0 0 0 .5 12 31 31 0 0 0 1 16.8a3 3 0 0 0 2.1 2.1c1.9.5 8.9.5 8.9.5s7 0 8.9-.5a3 3 0 0 0 2.1-2.1 31 31 0 0 0 .5-4.8 31 31 0 0 0-.5-4.8ZM9.6 15.5v-7l6.1 3.5-6.1 3.5Z"/></svg></span><span>YouTube</span></a>
-<button class="shortcut" data-page="ai"><span class="tile ai"><svg viewBox="0 0 24 24"><path d="M12 3v3m0 12v3M3 12h3m12 0h3M5.6 5.6l2.1 2.1m8.6 8.6 2.1 2.1m0-12.8-2.1 2.1m-8.6 8.6-2.1 2.1"></path><circle cx="12" cy="12" r="4"></circle></svg></span><span>AI</span></button>
-<a class="shortcut" href="https://discord.com/app" target="_blank" rel="noopener"><span class="tile discord"><svg viewBox="0 0 24 24" fill="currentColor" stroke="none"><path d="M19.7 5.3A18 18 0 0 0 15.2 4l-.6 1.2a16 16 0 0 0-5.2 0L8.8 4a18 18 0 0 0-4.5 1.3C1.5 9.5.7 13.6 1.1 17.6a18 18 0 0 0 5.5 2.8l1.2-2a11 11 0 0 1-1.9-.9l.5-.4a13 13 0 0 0 11.2 0l.5.4a11 11 0 0 1-1.9.9l1.2 2a18 18 0 0 0 5.5-2.8c.5-4.7-.8-8.7-3.2-12.3ZM8.7 14.8c-1 0-1.8-.9-1.8-2s.8-2 1.8-2 1.8.9 1.8 2-.8 2-1.8 2Zm6.6 0c-1 0-1.8-.9-1.8-2s.8-2 1.8-2 1.8.9 1.8 2-.8 2-1.8 2Z"/></svg></span><span>Discord</span></a>
-<a class="shortcut" href="https://open.spotify.com/" target="_blank" rel="noopener"><span class="tile music"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"></circle><path d="M7.5 10.2c3.4-1 6.9-.6 9.5 1m-8.8 2c2.7-.7 5.4-.3 7.5.8m-6.8 2c1.9-.4 3.8-.2 5.4.6"></path></svg></span><span>Music</span></a>
+<button class="shortcut" data-page="play"><span class="tile play"><svg viewBox="0 0 24 24"><path d="m9 6 10 6-10 6z"></path><path d="M4 5v14"></path></svg></span><span class="shortcut-copy"><strong>Play</strong><small>Games and breaks</small></span><span class="shortcut-arrow">↗</span></button>
+<a class="shortcut" href="https://www.youtube.com/" target="_blank" rel="noopener"><span class="tile youtube"><svg viewBox="0 0 24 24" fill="currentColor" stroke="none"><path d="M23 7.2a3 3 0 0 0-2.1-2.1C19 4.6 12 4.6 12 4.6s-7 0-8.9.5A3 3 0 0 0 1 7.2 31 31 0 0 0 .5 12 31 31 0 0 0 1 16.8a3 3 0 0 0 2.1 2.1c1.9.5 8.9.5 8.9.5s7 0 8.9-.5a3 3 0 0 0 2.1-2.1 31 31 0 0 0 .5-4.8 31 31 0 0 0-.5-4.8ZM9.6 15.5v-7l6.1 3.5-6.1 3.5Z"/></svg></span><span class="shortcut-copy"><strong>YouTube</strong><small>Videos and creators</small></span><span class="shortcut-arrow">↗</span></a>
+<button class="shortcut" data-page="ai"><span class="tile ai"><svg viewBox="0 0 24 24"><path d="M12 3v3m0 12v3M3 12h3m12 0h3M5.6 5.6l2.1 2.1m8.6 8.6 2.1 2.1m0-12.8-2.1 2.1m-8.6 8.6-2.1 2.1"></path><circle cx="12" cy="12" r="4"></circle></svg></span><span class="shortcut-copy"><strong>AI</strong><small>AI assistants</small></span><span class="shortcut-arrow">↗</span></button>
+<a class="shortcut" href="https://discord.com/app" target="_blank" rel="noopener"><span class="tile discord"><svg viewBox="0 0 24 24" fill="currentColor" stroke="none"><path d="M19.7 5.3A18 18 0 0 0 15.2 4l-.6 1.2a16 16 0 0 0-5.2 0L8.8 4a18 18 0 0 0-4.5 1.3C1.5 9.5.7 13.6 1.1 17.6a18 18 0 0 0 5.5 2.8l1.2-2a11 11 0 0 1-1.9-.9l.5-.4a13 13 0 0 0 11.2 0l.5.4a11 11 0 0 1-1.9.9l1.2 2a18 18 0 0 0 5.5-2.8c.5-4.7-.8-8.7-3.2-12.3ZM8.7 14.8c-1 0-1.8-.9-1.8-2s.8-2 1.8-2 1.8.9 1.8 2-.8 2-1.8 2Zm6.6 0c-1 0-1.8-.9-1.8-2s.8-2 1.8-2 1.8.9 1.8 2-.8 2-1.8 2Z"/></svg></span><span class="shortcut-copy"><strong>Discord</strong><small>Chat and communities</small></span><span class="shortcut-arrow">↗</span></a>
+<a class="shortcut" href="https://open.spotify.com/" target="_blank" rel="noopener"><span class="tile music"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"></circle><path d="M7.5 10.2c3.4-1 6.9-.6 9.5 1m-8.8 2c2.7-.7 5.4-.3 7.5.8m-6.8 2c1.9-.4 3.8-.2 5.4.6"></path></svg></span><span class="shortcut-copy"><strong>Music</strong><small>Listen while you work</small></span><span class="shortcut-arrow">↗</span></a>
 </nav>
+</div>
 </section>
 <section id="playPage" class="view" hidden>
 <div class="view-head"><button class="back" data-back aria-label="Back">←</button><div><h1>Play</h1><p class="sub">A little break between everything else.</p></div></div>
