@@ -45,6 +45,35 @@ main{width:min(1080px,100%);margin:auto;animation:rise .3s ease both}
 .shortcut-arrow{display:none}
 
 .footer{margin-top:auto;width:min(1080px,100%);display:flex;align-items:center;justify-content:space-between;padding-top:20px;color:#929da6;font-size:11px}
+.browser-header{width:100%;height:44px;display:flex;align-items:center;justify-content:space-between;margin:0 0 18px}
+.browser-controls,.browser-actions{display:flex;align-items:center;gap:7px}
+.header-button{width:36px;height:36px;display:grid;place-items:center;border:1px solid transparent;border-radius:8px;background:transparent;color:#c2cbd1;transition:background .16s,border-color .16s,color .16s}
+.header-button:hover{background:var(--surface);border-color:var(--line);color:var(--cyan)}
+.header-button svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.menu-wrap{position:relative}
+.menu-popover{position:absolute;right:0;top:42px;z-index:20;min-width:170px;padding:5px;border:1px solid var(--line);border-radius:9px;background:var(--surface);box-shadow:0 12px 30px #0003}
+.menu-popover button{width:100%;padding:10px 11px;text-align:left;border:0;border-radius:6px;background:transparent;color:var(--text);font-size:12px}
+.menu-popover button:hover{background:var(--surface-hover);color:var(--cyan)}
+.panel-backdrop{position:fixed;inset:0;z-index:30;display:grid;place-items:center;padding:20px;background:#111820aa}
+.extension-dialog{width:min(760px,100%);max-height:min(680px,90vh);overflow:auto;padding:22px;border:1px solid var(--line);border-radius:12px;background:var(--bg);box-shadow:0 20px 60px #0005}
+.extension-top{display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:20px}
+.extension-top h2{margin:0;font-size:18px;font-weight:650}.extension-top p{margin:5px 0 0;color:var(--muted);font-size:12px}
+.extension-layout{display:grid;grid-template-columns:220px minmax(0,1fr);gap:18px}
+.extension-list-wrap{min-width:0}.extension-list-heading{display:flex;align-items:center;justify-content:space-between;margin-bottom:10px;font-size:12px}
+.text-action{border:0;background:transparent;color:var(--cyan);font-size:12px;font-weight:600;padding:5px;cursor:pointer}.text-action:hover{color:#63c4d5}.danger{color:#d58b8b}
+.extension-list{display:flex;flex-direction:column;gap:7px}
+.extension-item{display:flex;align-items:center;gap:8px;padding:9px;border:1px solid var(--line);border-radius:8px;background:var(--surface);font-size:11px}
+.extension-item button{min-width:0;flex:1;text-align:left;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;border:0;background:transparent;color:var(--text);font-size:11px}
+.extension-item input{accent-color:var(--cyan)}
+.empty-extensions{color:var(--muted);font-size:11px;line-height:1.5}
+.extension-editor{display:flex;flex-direction:column;gap:8px;min-width:0}
+.extension-editor label{color:var(--muted);font-size:11px}
+.extension-editor input,.extension-editor textarea{width:100%;border:1px solid var(--line);border-radius:7px;background:var(--surface);color:var(--text);outline:0;padding:10px;font:12px Inter,system-ui,sans-serif}
+.extension-editor input:focus,.extension-editor textarea:focus{border-color:var(--cyan)}
+.extension-editor textarea{height:220px;resize:vertical;font-family:ui-monospace,SFMono-Regular,Consolas,monospace;line-height:1.5}
+.editor-actions{display:flex;align-items:center;gap:8px;margin-top:3px}.editor-actions span{flex:1}
+.save-extension{border:0;border-radius:7px;background:var(--cyan);color:#fff;padding:9px 13px;font-size:11px;font-weight:650}
+.extension-note{margin:16px 0 0;color:var(--muted);font-size:10px;line-height:1.5}
 .connection{display:flex;align-items:center;gap:7px;color:#929da6;font-size:11px}.connection strong{color:var(--cyan);font-weight:600;font-variant-numeric:tabular-nums}
 .blank{border:0;background:transparent;color:#a5afb7;font-size:11px;padding:8px 0;cursor:pointer;transition:color .18s}.blank:hover{color:var(--cyan-soft)}
 .view{width:100%;animation:rise .25s ease both}
@@ -66,7 +95,7 @@ h1{font-size:26px;letter-spacing:-.7px;margin:0;font-weight:650}.sub{margin:5px 
 .toast{position:fixed;bottom:24px;left:50%;transform:translate(-50%,10px);opacity:0;padding:10px 14px;border:1px solid var(--line);border-radius:9px;background:#343b42;color:#edf0f2;font-size:12px;pointer-events:none;transition:opacity .18s,transform .18s;z-index:10}
 .toast.show{opacity:1;transform:translate(-50%,0)}
 @keyframes rise{from{opacity:0;transform:translateY(7px)}to{opacity:1;transform:translateY(0)}}
-@media(max-width:760px){.shell{padding:34px 18px 18px}#home{min-height:0;gap:22px}.brand img{width:min(280px,78vw)}.welcome{margin-bottom:18px}.search{height:54px;padding:0 13px;border-radius:9px}.search input{font-size:14px}.go{height:36px;padding:0 13px}.quick-panel{padding:18px 0}.shortcuts{grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}.shortcut{min-height:58px;padding:9px}.tile{width:32px;height:32px;border-radius:7px}.footer{padding-top:24px}}
+@media(max-width:760px){.extension-dialog{padding:16px}.extension-layout{grid-template-columns:1fr}.extension-list{max-height:130px;overflow:auto}.extension-editor textarea{height:180px}.shell{padding:24px 18px 18px}#home{min-height:0;gap:22px}.brand img{width:min(280px,78vw)}.welcome{margin-bottom:18px}.search{height:54px;padding:0 13px;border-radius:9px}.search input{font-size:14px}.go{height:36px;padding:0 13px}.quick-panel{padding:18px 0}.shortcuts{grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}.shortcut{min-height:58px;padding:9px}.tile{width:32px;height:32px;border-radius:7px}.footer{padding-top:24px}}
 @media(max-width:420px){.shortcuts{grid-template-columns:1fr 1fr}.shortcut{min-height:56px}.cards,.ai-grid{grid-template-columns:1fr}}
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important;scroll-behavior:auto!important}}
 
@@ -76,6 +105,20 @@ h1{font-size:26px;letter-spacing:-.7px;margin:0;font-weight:650}.sub{margin:5px 
 <div class="shell">
 <div class="glow"></div>
 <main>
+<header class="browser-header" aria-label="Browser controls">
+  <div class="browser-controls">
+    <button class="header-button" id="navBack" type="button" aria-label="Back" title="Back"><svg viewBox="0 0 24 24"><path d="m15 18-6-6 6-6"/></svg></button>
+    <button class="header-button" id="navForward" type="button" aria-label="Forward" title="Forward"><svg viewBox="0 0 24 24"><path d="m9 18 6-6-6-6"/></svg></button>
+    <button class="header-button" id="navRefresh" type="button" aria-label="Refresh" title="Refresh"><svg viewBox="0 0 24 24"><path d="M20 7v5h-5M4 17v-5h5"/><path d="M5.6 9A7 7 0 0 1 18 6.5L20 12M4 12l2 5.5A7 7 0 0 0 18.4 15"/></svg></button>
+  </div>
+  <div class="browser-actions">
+    <button class="header-button extension-button" id="extensionsButton" type="button" title="Custom JS extensions" aria-label="Custom JS extensions"><svg viewBox="0 0 24 24"><path d="M9 4.5a2.5 2.5 0 1 0-5 0V8H2.5v5H4a2.5 2.5 0 1 1 5 0h5v-3.5a2.5 2.5 0 1 0 0-5V2h-5v2.5Z"/><path d="M14 8h3.5a2.5 2.5 0 1 1 5 0V13h-2.5a2.5 2.5 0 1 0 0 5H22v3.5h-8V18"/></svg></button>
+    <div class="menu-wrap">
+      <button class="header-button" id="menuButton" type="button" title="Menu" aria-label="Menu" aria-expanded="false"><svg viewBox="0 0 24 24"><circle cx="5" cy="12" r="1"/><circle cx="12" cy="12" r="1"/><circle cx="19" cy="12" r="1"/></svg></button>
+      <div class="menu-popover" id="menuPopover" hidden><button type="button" id="menuExtensions">Extensions</button><button type="button" id="menuAbout">About Edupoint</button></div>
+    </div>
+  </div>
+</header>
 <section id="home" class="view">
 <div class="home-main">
 <div class="brand"><img src="./Edupoint%20logogo.png" alt="Edupoint"></div>
@@ -120,6 +163,20 @@ h1{font-size:26px;letter-spacing:-.7px;margin:0;font-weight:650}.sub{margin:5px 
 </main>
 <footer class="footer"><div class="connection" aria-live="polite"><span id="connectionLabel">Connection</span><strong id="connectionTime">— ms</strong></div><button class="blank" id="blankButton" type="button">about:blank</button></footer>
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
+<div class="panel-backdrop" id="extensionPanel" hidden>
+  <section class="extension-dialog" role="dialog" aria-modal="true" aria-labelledby="extensionTitle">
+    <div class="extension-top"><div><h2 id="extensionTitle">Custom extensions</h2><p>Write small JavaScript add-ons for Scramjet.</p></div><button class="header-button" id="closeExtensions" type="button" aria-label="Close"><svg viewBox="0 0 24 24"><path d="m6 6 12 12M18 6 6 18"/></svg></button></div>
+    <div class="extension-layout">
+      <div class="extension-list-wrap"><div class="extension-list-heading"><strong>Your extensions</strong><button class="text-action" id="newExtension" type="button">+ New</button></div><div id="extensionList" class="extension-list"><p class="empty-extensions">No extensions yet.</p></div></div>
+      <form class="extension-editor" id="extensionForm">
+        <label for="extensionName">Name</label><input id="extensionName" maxlength="40" placeholder="My extension" required>
+        <label for="extensionCode">JavaScript</label><textarea id="extensionCode" spellcheck="false" placeholder="// Your extension code..." required></textarea>
+        <div class="editor-actions"><button class="text-action danger" id="deleteExtension" type="button" hidden>Delete</button><span></span><button class="save-extension" type="submit">Save extension</button></div>
+      </form>
+    </div>
+    <p class="extension-note">Extensions are saved in this browser. Scramjet page injection is not connected to this build yet.</p>
+  </section>
+</div>
 </div>
 <script>
 (() => {
@@ -129,6 +186,29 @@ function notify(message){toast.textContent=message;toast.classList.add('show');c
 function showPage(name){home.hidden=name!=='home';play.hidden=name!=='play';ai.hidden=name!=='ai';document.title=name==='home'?'Edupoint':name==='play'?'Play — Edupoint':'AI — Edupoint'}
 async function measureConnection(){const value=document.getElementById('connectionTime');try{const start=performance.now();await fetch('./s_sw.js?ping='+Date.now(),{method:'HEAD',cache:'no-store'});const ms=Math.round(performance.now()-start);value.textContent=ms+' ms'}catch{value.textContent='Offline'}}
 measureConnection();setInterval(measureConnection,15000);
+const menuButton=document.getElementById('menuButton'),menuPopover=document.getElementById('menuPopover'),extensionPanel=document.getElementById('extensionPanel');
+const extensionList=document.getElementById('extensionList'),extensionForm=document.getElementById('extensionForm'),extensionName=document.getElementById('extensionName'),extensionCode=document.getElementById('extensionCode'),deleteExtension=document.getElementById('deleteExtension');
+let extensions=[],editingId=null;
+try{extensions=JSON.parse(localStorage.getItem('edupoint.extensions')||'[]');if(!Array.isArray(extensions))extensions=[]}catch{extensions=[]}
+function closeMenu(){menuPopover.hidden=true;menuButton.setAttribute('aria-expanded','false')}
+function openExtensions(){closeMenu();extensionPanel.hidden=false;renderExtensions();if(!extensions.length)newExtensionForm();else if(!editingId)selectExtension(extensions[0].id)}
+function newExtensionForm(){editingId=null;extensionName.value='';extensionCode.value='';deleteExtension.hidden=true;extensionName.focus()}
+function selectExtension(id){const item=extensions.find(x=>x.id===id);if(!item)return;editingId=id;extensionName.value=item.name;extensionCode.value=item.code;deleteExtension.hidden=false}
+function renderExtensions(){extensionList.replaceChildren();if(!extensions.length){const p=document.createElement('p');p.className='empty-extensions';p.textContent='No extensions yet.';extensionList.append(p);return}extensions.forEach(item=>{const row=document.createElement('div');row.className='extension-item';const toggle=document.createElement('input');toggle.type='checkbox';toggle.checked=item.enabled!==false;toggle.setAttribute('aria-label','Enable '+item.name);toggle.addEventListener('change',()=>{item.enabled=toggle.checked;saveExtensions()});const edit=document.createElement('button');edit.type='button';edit.textContent=item.name;edit.addEventListener('click',()=>selectExtension(item.id));row.append(toggle,edit);extensionList.append(row)})}
+function saveExtensions(){try{localStorage.setItem('edupoint.extensions',JSON.stringify(extensions))}catch{notify('Could not save extensions in this browser.')}}
+document.getElementById('navBack').addEventListener('click',()=>history.back());
+document.getElementById('navForward').addEventListener('click',()=>history.forward());
+document.getElementById('navRefresh').addEventListener('click',()=>location.reload());
+menuButton.addEventListener('click',()=>{const opening=menuPopover.hidden;menuPopover.hidden=!opening;menuButton.setAttribute('aria-expanded',String(opening))});
+document.addEventListener('click',e=>{if(!e.target.closest('.menu-wrap'))closeMenu()});
+document.getElementById('menuExtensions').addEventListener('click',openExtensions);
+document.getElementById('menuAbout').addEventListener('click',()=>{closeMenu();notify('Edupoint')});
+document.getElementById('extensionsButton').addEventListener('click',openExtensions);
+document.getElementById('closeExtensions').addEventListener('click',()=>extensionPanel.hidden=true);
+extensionPanel.addEventListener('click',e=>{if(e.target===extensionPanel)extensionPanel.hidden=true});
+document.getElementById('newExtension').addEventListener('click',newExtensionForm);
+extensionForm.addEventListener('submit',e=>{e.preventDefault();const name=extensionName.value.trim(),code=extensionCode.value;if(!name||!code.trim())return;if(editingId){const item=extensions.find(x=>x.id===editingId);if(item){item.name=name;item.code=code}}else{const item={id:Date.now().toString(36)+Math.random().toString(36).slice(2,7),name,code,enabled:true};extensions.push(item);editingId=item.id}saveExtensions();renderExtensions();selectExtension(editingId);notify('Extension saved')});
+deleteExtension.addEventListener('click',()=>{if(!editingId)return;extensions=extensions.filter(x=>x.id!==editingId);saveExtensions();renderExtensions();newExtensionForm();notify('Extension deleted')});
 document.querySelectorAll('[data-page]').forEach(el=>el.addEventListener('click',()=>showPage(el.dataset.page)));
 document.querySelectorAll('[data-back]').forEach(el=>el.addEventListener('click',()=>showPage('home')));
 document.getElementById('searchForm').addEventListener('submit',e=>{
