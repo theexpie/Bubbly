@@ -56,7 +56,7 @@ main{width:100%;flex:1;display:flex;flex-direction:column;margin:0;animation:ris
 .menu-popover button:hover{background:var(--surface-hover);color:var(--cyan)}
 .panel-backdrop{position:fixed;inset:0;z-index:30;display:grid;place-items:center;padding:20px;background:#111820aa}
 .extension-dialog{width:min(760px,100%);max-height:min(680px,90vh);overflow:auto;padding:22px;border:1px solid var(--line);border-radius:12px;background:var(--bg);box-shadow:0 20px 60px #0005}
-.extension-top{display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:20px}
+.extension-top{display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:20px}.settings-dialog{width:min(480px,100%)}.settings-list{display:flex;flex-direction:column}.setting-row{display:flex;align-items:center;justify-content:space-between;gap:20px;padding:15px 0;border-bottom:1px solid var(--line);font-size:13px}.setting-row:last-child{border-bottom:0}.setting-row input{width:18px;height:18px;accent-color:var(--cyan)}
 .extension-top h2{margin:0;font-size:18px;font-weight:650}.extension-top p{margin:5px 0 0;color:var(--muted);font-size:12px}
 .extension-layout{display:grid;grid-template-columns:220px minmax(0,1fr);gap:18px}
 .extension-list-wrap{min-width:0}.extension-list-heading{display:flex;align-items:center;justify-content:space-between;margin-bottom:10px;font-size:12px}
@@ -146,7 +146,7 @@ button:focus-visible,a:focus-visible,input:focus-visible,textarea:focus-visible{
 
 @media(max-width:760px){.extension-dialog{padding:16px}.extension-layout{grid-template-columns:1fr}.extension-list{max-height:130px;overflow:auto}.extension-editor textarea{height:180px}.browser-header{height:54px;padding:0 14px}#home,.view{padding:24px 18px}.footer{padding:12px 16px}#home{min-height:0;gap:22px}.brand img{width:min(280px,78vw)}.welcome{margin-bottom:18px}.search{height:54px;padding:0 13px;border-radius:9px}.search input{font-size:14px}.go{height:36px;padding:0 13px}.quick-panel{padding:18px 0}.shortcuts{grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}.shortcut{min-height:58px;padding:9px}.tile{width:32px;height:32px;border-radius:7px}.footer{padding-top:24px}}
 @media(max-width:420px){.shortcuts{grid-template-columns:1fr 1fr}.shortcut{min-height:56px}.cards,.ai-grid{grid-template-columns:1fr}}
-@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important;scroll-behavior:auto!important}}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important;scroll-behavior:auto!important}}.reduce-motion *, .reduce-motion *::before, .reduce-motion *::after{animation-duration:.01ms!important;transition-duration:.01ms!important;scroll-behavior:auto!important}
 
 </style>
 </head>
@@ -164,7 +164,7 @@ button:focus-visible,a:focus-visible,input:focus-visible,textarea:focus-visible{
     <button class="header-button extension-button" id="extensionsButton" type="button" title="Custom JS extensions" aria-label="Custom JS extensions"><svg viewBox="0 0 24 24"><path d="M9 4.5a2.5 2.5 0 1 0-5 0V8H2.5v5H4a2.5 2.5 0 1 1 5 0h5v-3.5a2.5 2.5 0 1 0 0-5V2h-5v2.5Z"/><path d="M14 8h3.5a2.5 2.5 0 1 1 5 0V13h-2.5a2.5 2.5 0 1 0 0 5H22v3.5h-8V18"/></svg></button>
     <div class="menu-wrap">
       <button class="header-button" id="menuButton" type="button" title="Menu" aria-label="Menu" aria-expanded="false"><svg viewBox="0 0 24 24"><path d="M4 6.5h16M4 12h16M4 17.5h16"/></svg></button>
-      <div class="menu-popover" id="menuPopover" hidden><button type="button" id="menuExtensions">Extensions</button><button type="button" id="menuAbout">About Edupoint</button></div>
+      <div class="menu-popover" id="menuPopover" hidden><button type="button" id="menuExtensions">Extensions</button><button type="button" id="menuSettings">Settings</button></div>
     </div>
   </div>
 </header>
@@ -225,6 +225,7 @@ button:focus-visible,a:focus-visible,input:focus-visible,textarea:focus-visible{
     </div>
   </section>
 </div>
+<div class="panel-backdrop" id="settingsPanel" hidden><section class="extension-dialog settings-dialog" role="dialog" aria-modal="true" aria-labelledby="settingsTitle"><div class="extension-top"><h2 id="settingsTitle">Settings</h2><button class="header-button" id="closeSettings" type="button" aria-label="Close"><svg viewBox="0 0 24 24"><path d="m6 6 12 12M18 6 6 18"/></svg></button></div><div class="settings-list"><label class="setting-row" for="reduceMotion">Reduce motion<input id="reduceMotion" type="checkbox"></label><label class="setting-row" for="showConnection">Show connection time<input id="showConnection" type="checkbox" checked></label></div></section></div>
 </div>
 <script>
 (() => {
@@ -234,7 +235,7 @@ function notify(message){toast.textContent=message;toast.classList.add('show');c
 function showPage(name){home.hidden=name!=='home';play.hidden=name!=='play';ai.hidden=name!=='ai';document.title=name==='home'?'Edupoint':name==='play'?'Play — Edupoint':'AI — Edupoint'}
 async function measureConnection(){const value=document.getElementById('connectionTime');try{const start=performance.now();await fetch('./s_sw.js?ping='+Date.now(),{method:'HEAD',cache:'no-store'});const ms=Math.round(performance.now()-start);value.textContent=ms+' ms'}catch{value.textContent='Offline'}}
 measureConnection();setInterval(measureConnection,15000);
-const menuButton=document.getElementById('menuButton'),menuPopover=document.getElementById('menuPopover'),extensionPanel=document.getElementById('extensionPanel');
+const menuButton=document.getElementById('menuButton'),menuPopover=document.getElementById('menuPopover'),extensionPanel=document.getElementById('extensionPanel'),settingsPanel=document.getElementById('settingsPanel');
 const extensionList=document.getElementById('extensionList'),extensionForm=document.getElementById('extensionForm'),extensionName=document.getElementById('extensionName'),extensionCode=document.getElementById('extensionCode'),deleteExtension=document.getElementById('deleteExtension');
 let extensions=[],editingId=null;
 try{extensions=JSON.parse(localStorage.getItem('edupoint.extensions')||'[]');if(!Array.isArray(extensions))extensions=[]}catch{extensions=[]}
@@ -250,7 +251,15 @@ document.getElementById('navRefresh').addEventListener('click',()=>location.relo
 menuButton.addEventListener('click',()=>{const opening=menuPopover.hidden;menuPopover.hidden=!opening;menuButton.setAttribute('aria-expanded',String(opening))});
 document.addEventListener('click',e=>{if(!e.target.closest('.menu-wrap'))closeMenu()});
 document.getElementById('menuExtensions').addEventListener('click',openExtensions);
-document.getElementById('menuAbout').addEventListener('click',()=>{closeMenu();notify('Edupoint')});
+document.getElementById('menuSettings').addEventListener('click',()=>{closeMenu();settingsPanel.hidden=false});
+document.getElementById('closeSettings').addEventListener('click',()=>settingsPanel.hidden=true);
+settingsPanel.addEventListener('click',e=>{if(e.target===settingsPanel)settingsPanel.hidden=true});
+const reduceMotion=document.getElementById('reduceMotion'),showConnection=document.getElementById('showConnection'),connection=document.querySelector('.connection');
+try{reduceMotion.checked=localStorage.getItem('edupoint.reduceMotion')==='true';showConnection.checked=localStorage.getItem('edupoint.showConnection')!=='false'}catch{}
+function applySettings(){document.documentElement.classList.toggle('reduce-motion',reduceMotion.checked);connection.hidden=!showConnection.checked}
+reduceMotion.addEventListener('change',()=>{try{localStorage.setItem('edupoint.reduceMotion',String(reduceMotion.checked))}catch{}applySettings()});
+showConnection.addEventListener('change',()=>{try{localStorage.setItem('edupoint.showConnection',String(showConnection.checked))}catch{}applySettings()});
+applySettings();
 document.getElementById('extensionsButton').addEventListener('click',openExtensions);
 document.getElementById('closeExtensions').addEventListener('click',()=>extensionPanel.hidden=true);
 extensionPanel.addEventListener('click',e=>{if(e.target===extensionPanel)extensionPanel.hidden=true});
