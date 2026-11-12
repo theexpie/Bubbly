@@ -191,22 +191,22 @@ button:focus-visible,a:focus-visible,input:focus-visible,textarea:focus-visible{
 </div>
 </section>
 <section id="playPage" class="view" hidden>
-<div class="view-head"><button class="back" data-back aria-label="Back">←</button><div><h1>Play</h1><p class="sub">A little break between everything else.</p></div></div>
+<div class="view-head"><button class="back" data-back aria-label="Back">←</button><div><h1>Play</h1></div></div>
 <div class="cards">
-<article class="game"><div><div class="game-icon">◈</div><h3>Neon Drift</h3><p>Race through a glowing endless track.</p></div><span class="tag">Coming soon</span></article>
-<article class="game"><div><div class="game-icon">▦</div><h3>Block Party</h3><p>A tiny puzzle with a big brain.</p></div><span class="tag">Coming soon</span></article>
-<article class="game"><div><div class="game-icon">✳</div><h3>Orbit</h3><p>Find your rhythm and stay in orbit.</p></div><span class="tag">Coming soon</span></article>
-<article class="game"><div><div class="game-icon">⌁</div><h3>Wordcraft</h3><p>Build words, beat the clock.</p></div><span class="tag">Coming soon</span></article>
-<article class="game"><div><div class="game-icon">△</div><h3>Vector</h3><p>Think ahead. Make every move count.</p></div><span class="tag">Coming soon</span></article>
-<article class="game"><div><div class="game-icon">◎</div><h3>Memory Lane</h3><p>How much can you remember?</p></div><span class="tag">Coming soon</span></article>
-</div><p class="notice">These are sample game cards. Games are not playable yet.</p>
+<article class="game"><div><div class="game-icon">◈</div><h3>Neon Drift</h3></div><span class="tag">Coming soon</span></article>
+<article class="game"><div><div class="game-icon">▦</div><h3>Block Party</h3></div><span class="tag">Coming soon</span></article>
+<article class="game"><div><div class="game-icon">✳</div><h3>Orbit</h3></div><span class="tag">Coming soon</span></article>
+<article class="game"><div><div class="game-icon">⌁</div><h3>Wordcraft</h3></div><span class="tag">Coming soon</span></article>
+<article class="game"><div><div class="game-icon">△</div><h3>Vector</h3></div><span class="tag">Coming soon</span></article>
+<article class="game"><div><div class="game-icon">◎</div><h3>Memory Lane</h3></div><span class="tag">Coming soon</span></article>
+</div>
 </section>
 <section id="aiPage" class="view" hidden>
-<div class="view-head"><button class="back" data-back aria-label="Back">←</button><div><h1>AI</h1><p class="sub">Choose an assistant and get thinking.</p></div></div>
+<div class="view-head"><button class="back" data-back aria-label="Back">←</button><div><h1>AI</h1></div></div>
 <div class="ai-grid">
-<a class="ai-link" href="https://duck.ai/" target="_blank" rel="noopener"><span class="ai-mark">D.</span><span><strong>Duck.ai</strong><br><small>Private AI chat</small></span></a>
-<a class="ai-link" href="https://chatgpt.com/" target="_blank" rel="noopener"><span class="ai-mark">✳</span><span><strong>ChatGPT</strong><br><small>Ideas, answers, and more</small></span></a>
-<a class="ai-link" href="https://claude.ai/" target="_blank" rel="noopener"><span class="ai-mark">✳</span><span><strong>Claude</strong><br><small>Think, write, and create</small></span></a>
+<a class="ai-link" href="https://duck.ai/" target="_blank" rel="noopener"><span class="ai-mark">D.</span><span><strong>Duck.ai</strong></span></a>
+<a class="ai-link" href="https://chatgpt.com/" target="_blank" rel="noopener"><span class="ai-mark">✳</span><span><strong>ChatGPT</strong></span></a>
+<a class="ai-link" href="https://claude.ai/" target="_blank" rel="noopener"><span class="ai-mark">✳</span><span><strong>Claude</strong></span></a>
 </div>
 </section>
 </main>
@@ -214,7 +214,7 @@ button:focus-visible,a:focus-visible,input:focus-visible,textarea:focus-visible{
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
 <div class="panel-backdrop" id="extensionPanel" hidden>
   <section class="extension-dialog" role="dialog" aria-modal="true" aria-labelledby="extensionTitle">
-    <div class="extension-top"><div><h2 id="extensionTitle">Custom extensions</h2><p>Write small JavaScript add-ons for Scramjet.</p></div><button class="header-button" id="closeExtensions" type="button" aria-label="Close"><svg viewBox="0 0 24 24"><path d="m6 6 12 12M18 6 6 18"/></svg></button></div>
+    <div class="extension-top"><div><h2 id="extensionTitle">Custom extensions</h2></div><button class="header-button" id="closeExtensions" type="button" aria-label="Close"><svg viewBox="0 0 24 24"><path d="m6 6 12 12M18 6 6 18"/></svg></button></div>
     <div class="extension-layout">
       <div class="extension-list-wrap"><div class="extension-list-heading"><strong>Your extensions</strong><button class="text-action" id="newExtension" type="button">+ New</button></div><div id="extensionList" class="extension-list"><p class="empty-extensions">No extensions yet.</p></div></div>
       <form class="extension-editor" id="extensionForm">
@@ -223,7 +223,6 @@ button:focus-visible,a:focus-visible,input:focus-visible,textarea:focus-visible{
         <div class="editor-actions"><button class="text-action danger" id="deleteExtension" type="button" hidden>Delete</button><span></span><button class="save-extension" type="submit">Save extension</button></div>
       </form>
     </div>
-    <p class="extension-note">Extensions are saved in this browser. Scramjet page injection is not connected to this build yet.</p>
   </section>
 </div>
 </div>
