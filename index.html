@@ -45,7 +45,7 @@ main{width:min(1080px,100%);margin:auto;animation:rise .3s ease both}
 .shortcut-arrow{display:none}
 
 .footer{margin-top:auto;width:min(1080px,100%);display:flex;align-items:center;justify-content:space-between;padding-top:20px;color:#929da6;font-size:11px}
-.footer-brand{display:flex;align-items:center;gap:8px}.dot{display:none}
+.connection{display:flex;align-items:center;gap:7px;color:#929da6;font-size:11px}.connection-dot{width:6px;height:6px;border-radius:50%;background:#7b8790;flex:none}.connection strong{color:var(--cyan);font-weight:600;font-variant-numeric:tabular-nums}
 .blank{border:0;background:transparent;color:#a5afb7;font-size:11px;padding:8px 0;cursor:pointer;transition:color .18s}.blank:hover{color:var(--cyan-soft)}
 .view{width:100%;animation:rise .25s ease both}
 [hidden]{display:none!important}
@@ -118,7 +118,7 @@ h1{font-size:26px;letter-spacing:-.7px;margin:0;font-weight:650}.sub{margin:5px 
 </div>
 </section>
 </main>
-<footer class="footer"><div class="footer-brand"><span>Proxy load</span><strong id="proxyLoadTime" style="color:var(--cyan);font-variant-numeric:tabular-nums;font-weight:600">— ms</strong></div><button class="blank" id="blankButton" type="button">about:blank</button></footer>
+<footer class="footer"><div class="connection" aria-live="polite"><span class="connection-dot"></span><span id="connectionLabel">Connection</span><strong id="connectionTime">— ms</strong></div><button class="blank" id="blankButton" type="button">about:blank</button></footer>
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
 </div>
 <script>
@@ -127,6 +127,8 @@ const home=document.getElementById('home'),play=document.getElementById('playPag
 const toast=document.getElementById('toast');let toastTimer;
 function notify(message){toast.textContent=message;toast.classList.add('show');clearTimeout(toastTimer);toastTimer=setTimeout(()=>toast.classList.remove('show'),2400)}
 function showPage(name){home.hidden=name!=='home';play.hidden=name!=='play';ai.hidden=name!=='ai';document.title=name==='home'?'Edupoint':name==='play'?'Play — Edupoint':'AI — Edupoint'}
+async function measureConnection(){const value=document.getElementById('connectionTime'),dot=document.querySelector('.connection-dot');try{const start=performance.now();await fetch('./s_sw.js?ping='+Date.now(),{method:'HEAD',cache:'no-store'});const ms=Math.round(performance.now()-start);value.textContent=ms+' ms';dot.style.background=ms<120?'#35b879':ms<300?'#d5a64a':'#d46b6b'}catch{value.textContent='Offline';dot.style.background='#d46b6b'}}
+measureConnection();setInterval(measureConnection,15000);
 document.querySelectorAll('[data-page]').forEach(el=>el.addEventListener('click',()=>showPage(el.dataset.page)));
 document.querySelectorAll('[data-back]').forEach(el=>el.addEventListener('click',()=>showPage('home')));
 document.getElementById('searchForm').addEventListener('submit',e=>{
